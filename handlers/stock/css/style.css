@@ -1,0 +1,156 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  --main-gray-color: rgba(230, 224, 224, 0.753);
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.block {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+label,
+p {
+  margin-bottom: 10px;
+  font-size: 20px;
+  width: fit-content;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+.button {
+  flex: 1 1 auto;
+  padding: 16px 32px;
+  margin-bottom: 20px;
+}
+
+.hidden__button {
+  display: none;
+}
+
+.print-block {
+  width: auto;
+  /* display: none; */
+  flex-direction: column;
+}
+
+.table {
+  display: none;
+  width: auto;
+  border: 0.5px solid black;
+  /* grid-template-columns: max-content max-content repeat(15, minmax(60px, auto)); */
+  margin-bottom: 20px;
+}
+
+.cell {
+  border: 0.5px solid black;
+  padding: 5px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.vip {
+  background: #ffff7379;
+}
+
+.cup,
+.cupPack {
+  background: #9cef6c79;
+}
+
+.summary {
+  border: 0.5px solid black;
+  background: var(--main-gray-color);
+  font-weight: bold;
+}
+
+.num {
+  text-align: right;
+  background: var(--main-gray-color);
+}
+
+.shop-name {
+  background: var(--main-gray-color);
+}
+
+.table-header {
+  font-size: 11px;
+  font-weight: bold;
+  background: var(--main-gray-color);
+  padding: 5px 0;
+  border: 0.5px solid black;
+  text-align: center;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+#userStopInput:focus::placeholder {
+  color: transparent;
+}
+
+.tip-list-item__link {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+}
+
+.stop-preview {
+  display: none;
+}
+
+.prev-item {
+  padding: 5px;
+}
+
+.stop-list {
+  margin-bottom: 20px;
+}
+
+@media print {
+  body {
+    visibility: hidden;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+  .cell {
+    font-size: 18px;
+  }
+  .print-block,
+  .print-block * {
+    visibility: visible;
+  }
+  .print-block {
+    position: absolute;
+    top: 50px;
+  }
+}

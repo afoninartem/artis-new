@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Подсчёт обедов</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/print.css" media="print">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <form action="" class="data-base">
+          <!-- <p class="data-base__text"></p> -->
+          <input class="inputfile" type="file" name="dataBase" id="dataBase" />
+          <label id="label1" for="dataBase">Загрузить данные из 1С7</label>
+        </form>
+        <form action="" class="dinners-list">
+          <input class="inputfile " type="file" name="dinnersList" id="dinnersList" />
+          <label id="label2" for="dinnersList">Загрузить данные из Senesys</label>
+        </form>
+      </div>
+      <main class="main">
+        <div class="buttons-block">
+          <button
+            type="button"
+            class="hbtn hb-border-bottom-br3"
+            onclick="getArtis()"
+          >
+            Артис
+          </button>
+          <button
+            type="button"
+            class="hbtn hb-border-bottom-br3"
+            onclick="getGWD()"
+          >
+            Гуд Вуд
+          </button>
+          <button
+            type="button"
+            class="hbtn hb-border-bottom-br3"
+            onclick="getEmul()"
+          >
+            Эмульком
+          </button>
+        </div>
+        <div class="output"></div>
+        <div class="print"></div>
+      </main>
+      <div class="manual">
+        <ol>
+          <li>
+            <span>1</span> В 1С7 выгрузить отчет <a class="tip" href="">Планирование выдачи подарков<span><img width="1200" src="./img/Report.png" alt=""></span></a>  или попросить его у Афонина Артема (afonin.a@artis21.ru, 4575)
+          </li>
+          <li><span>2</span> Выгрузить нужные данные из Senesys</li>
+          <li><span>3</span> Получившиеся файлы <a class="tip" href="">сохранить в формате CSV<span><img src="./img/SaveCSV.PNG" alt=""></span></a></li>
+          <li><span>4</span> Загрузить их через интерфейс программы</li>
+        </ol>
+      </div>
+    </div>
+    <script src="./script2.js"></script>
+  </body>
+</html>

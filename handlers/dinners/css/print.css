@@ -1,0 +1,45 @@
+body {
+  line-height: 1.2;
+  visibility: hidden;
+  font-size: 20pt;
+}
+* {
+  -webkit-print-color-adjust: exact;
+}
+.cell {
+  font-size: 20pt;
+  border: .3px solid black;
+  padding: 5px
+}
+.title {
+  font-size: 24pt;
+  font-weight: bold;
+}
+.print,
+.print * {
+  visibility: visible;
+}
+.print {
+  /* transform: translateY(-1000px); */
+  position: absolute;
+  top: 20px;
+}
+html,
+body,
+.wrapper,
+.main,
+.print {
+  float: none;
+}
+.page {
+  display: block;
+  break-inside: avoid;
+  break-before: always;
+}
+.page__row {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+@page {
+  margin: 1cm;
+}

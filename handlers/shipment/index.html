@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Отгрузочный лист</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <form action="" class="upload">
+        <input class="inputfile" id="file" type="file" required />
+        <label id="label1" for="file">Загрузка файла CSV</label>
+      </form>
+      <form action="" class="table-create">
+        <button type="button" class="hbtn hb-border-bottom-br3" id="fullTable" onclick="mainShipment()">
+          МСК + РЕГ, без НН и СПБ
+        </button>
+        <button type="button" class="hbtn hb-border-bottom-br3" id="spb" onclick="piter()">
+          САНКТ-ПЕТЕРБУРГ
+        </button>
+        <button type="button" class="hbtn hb-border-bottom-br3" id="nn" onclick="novgorod()">
+          НИЖНИЙ НОВГОРОД
+        </button>
+        <button type="button" class="hbtn hb-border-bottom-br3" id="spbnn" onclick="novgorodAndPiter()">
+          СПБ + НН
+        </button>
+        <button type="button" class="hbtn hb-border-bottom-br3" id="help" onclick="toggleManual()">
+          Помощь
+        </button>
+      </form>
+    </div>
+    <div class="table-block">
+      <button type="button" class="hbtn hb-border-bottom-br3" id="print" onclick="window.print()">
+        Печать
+      </button>
+      <div class="print-area"></div>
+    </div>
+    <div class="popup">
+      <div class="manual">
+        <h1 class="manual__header">Инструкция по применению<span onclick="toggleManual()" class="close"></span></h1>
+        <ol>
+          <li>
+            <span>1</span> В 1С7 открыть отчет
+            <a class="tip" href="">Анализ рекламаций по рекламе<span><img src="./img/Report.png" alt="" /></span></a>
+          </li>
+          <li>
+            <span>2</span> Выбрать нужную
+            <a class="tip" href="">дату отгрузки<span><img src="./img/Date.PNG" alt="" /></span></a>
+            и сформировать
+          </li>
+          <li>
+            <span>3</span>
+            <a class="tip" href="">
+              Cохранить<span><img src="./img/SaveXLS.PNG" alt="" /></span></a>
+            в формате XLS
+          </li>
+          <li>
+            <span>4</span> Получившийся файл
+            <a class="tip" href="">сохранить в формате CSV<span><img src="./img/SaveCSV.PNG" alt="" /></span></a>
+          </li>
+          <li>
+            <span>5</span> Выбрать нужный файл через интерфейс программы
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="warning-popup">
+      <div class="warn-text">
+        <h1 class="warning__header">
+          Необходимо откорректировать заявки:<span onclick="closeWarning()" class="close"></span>
+        </h1>
+      </div>
+    </div>
+    <div class="img-block">
+      <img id="kumamon" src="./img/kumamon.png" alt="For the glory of Satan, of course!">
+    </div>
+  </div>
+  <!-- <div class="color-test"></div> -->
+  <script src="js.js"></script>
+</body>
+
+</html>

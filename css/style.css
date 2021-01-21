@@ -1,0 +1,58 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 50px 10px;
+  display: grid;
+  place-items: center;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.header__nav {
+  display: flex;
+}
+
+.header__nav-item {
+  padding: 0 10px;
+}
+
+.header__nav-btn, .drop-btn {
+  background: transparent;
+  border: none;
+}
+
+.header__nav-btn:hover {
+  transform: scale(1.1);
+}
+
+.header__nav-btn:active {
+  transform: scale(1.2);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: max-content;
+  place-items: center;
+}
+
+
