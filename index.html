@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="./css/reset.css" />
   <link rel="stylesheet" href="./css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/2ddb2cf10f.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -25,13 +27,50 @@
 
     </div>
     <ul class="header__nav">
-      <li class="header__nav-item"><button class="header__nav-btn" type="button" value="warehouse">АХО</button></li>
-      <li class="header__nav-item"><button class="header__nav-btn" type="button" value="warehouse">СКЛАД</button></li>
-      <li class="header__nav-item"><button class="header__nav-btn" type="button" value="personal">ПЕРСОНАЛ</button></li>
+      <li class="header__nav-item"><button class="header__nav-btn" type="button" value="maintenance">АХО</button>
+        <ul class="drop">
+          <li class="drop__item">
+            <button class="drop__item-btn">Обеды</button>
+          </li>
+        </ul>
+      </li>
+      <li class="header__nav-item"><button class="header__nav-btn" type="button" value="warehouse">СКЛАД</button>
+        <ul class="drop">
+          <li class="drop__item"><button class="drop__item-btn">Акции</button></li>
+          <li class="drop__item"><button class="drop__item-btn">Комус</button></li>
+          <li class="drop__item"><button class="drop__item-btn">Визитки</button></li>
+          <li class="drop__item"><button class="drop__item-btn">Поступления</button></li>
+          <li class="drop__item"><button class="drop__item-btn">Отгрузки</button></li>
+        </ul>
+      </li>
+      <li class="header__nav-item"><button class="header__nav-btn" type="button" value="personal">ПЕРСОНАЛ</button>
+        <ul class="drop">
+          <li class="drop__item"><button class="drop__item-btn">УРВ</button></li>
+        </ul>
+      </li>
     </ul>
   </header>
   <main class="main">
-
+    <div class="carousel-container">
+      <i class="fas fa-arrow-left" id="prevBtn"></i>
+      <i class="fas fa-arrow-right" id="nextBtn"></i>
+      <div class="carousel-slide">
+        <img src="./img/pic-11.jpeg" alt="12" id="lastClone" />
+        <img src="./img/pic-0.jpeg" alt="0" />
+        <img src="./img/pic-1.jpeg" alt="1" />
+        <img src="./img/pic-2.jpeg" alt="2" />
+        <img src="./img/pic-3.jpeg" alt="3" />
+        <img src="./img/pic-4.jpeg" alt="4" />
+        <img src="./img/pic-5.jpeg" alt="5" />
+        <img src="./img/pic-6.jpeg" alt="6" />
+        <img src="./img/pic-7.jpeg" alt="7" />
+        <img src="./img/pic-8.jpeg" alt="8" />
+        <img src="./img/pic-9.jpeg" alt="9" />
+        <img src="./img/pic-10.jpeg" alt="10" />
+        <img src="./img/pic-11.jpeg" alt="11" />
+        <img src="./img/pic-0.jpeg" alt="0" id="firstClone" />
+      </div>
+    </div>
   </main>
 
   <script src="script.js"></script>
