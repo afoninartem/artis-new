@@ -4,10 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Обработка счетов Комус для импорта в справочник</title>
+  <title>Обработка отчёта по акции</title>
   <link rel="stylesheet" href="./css/reset.css">
-  <!-- <link rel="stylesheet" href="./css/style.css"> -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -40,22 +39,61 @@
       </li>
       <li class="header__nav-item"><a class="header__nav-btn" value="warehouse">СКЛАД</a>
         <ul class="drop">
-          <li class="drop__item"><a href="../stocks/index.html" class="drop__item-btn">Акции</a></li>
-          <li class="drop__item"><a href="../komus/index.html" class="drop__item-btn">Комус</a></li>
-          <li class="drop__item"><a href="../cards/index.html" class="drop__item-btn">Визитки</a></li>
-          <li class="drop__item"><a href="../incomes/index.html" class="drop__item-btn">Поступления</a></li>
-          <li class="drop__item"><a href="../shipment/index.html" class="drop__item-btn">Отгрузки</a></li>
-          <li class="drop__item"><a href="../need/index.html" class="drop__item-btn">Потребность</a></li>
+          <li class="drop__item"><a href="../stocks/index.html"
+              class="drop__item-btn">Акции</a></li>
+          <li class="drop__item"><a href="../komus/index.html"
+              class="drop__item-btn">Комус</a></li>
+          <li class="drop__item"><a href="../cards/index.html"
+              class="drop__item-btn">Визитки</a></li>
+          <li class="drop__item"><a href="../incomes/index.html"
+              class="drop__item-btn">Поступления</a></li>
+          <li class="drop__item"><a href="../shipment/index.html"
+              class="drop__item-btn">Отгрузки</a></li>
+          <li class="drop__item"><a href="../need/index.html"
+              class="drop__item-btn">Потребность</a></li>
         </ul>
       </li>
     </ul>
   </header>
   <div class="wrapper">
-    <input type="file" id="file">
-    <button class="download-1">Файл для справочника</button>
-    <button class="download-2">Файл для поступления</button>
+    <form action="" class="upload">
+      <div class="block block-1">
+        <p class="last-info"></p>
+        <label for="shops">Если прошло больше двух недель, рекомендуется загрузить актуальный список салонов в формате
+          CSV:</label>
+        <input type="file" name="full-list" id="shops">
+      </div>
+      <div class="block stop">
+        <p>Не включать в таблицу следующие салоны:</p>
+        <input id="userStopInput" type="text" placeholder="Выберите салон">
+        <ul class="tip-list"></ul>
+        <div class="stop-preview">
+          <p>Будут исключены:</p>
+          <ul class="stop-list"></ul>
+          <button type="button" class="button" id="clearStopList">Очистить стоп-лист</button>
+        </div>
+      </div>
+      <div class="block block-2">
+        <p>Перед загрузкой следующего файла укажите какую информацию необходимо добавить в таблицу:</p>
+        <label><input type="checkbox" class="checkbox" value="male" id="male">Мужчины</label>
+        <label><input type="checkbox" class="checkbox" value="female" id="female">Женщины</label>
+        <label><input type="checkbox" class="checkbox" value="children" id="children">Дети</label>
+        <label><input type="checkbox" class="checkbox" value="newspapers" id="newspapers">Газеты</label>
+        <label for="presents">Загрузить розничную расстановку в формате CSV:</label>
+        <input type="file" name="presents" id="presents">
+      </div>
+      <div class="block block-3">
+        <label for="commonReport">Загрузить отчет по акции в формате CSV:</label>
+        <input type="file" name="full-list" id="commonReport" required>
+      </div>
+      <button type="submit" class="button" id="download">Скачать CSV</button>
+    </form>
+    <button class="hidden__button button" type="button" onclick="tablePrint()">Печать</button>
+    <div class="print-block">
+      <div class="table"></div>
+    </div>
   </div>
-  <script src="./script.js"></script>
+  <script src="js.js"></script>
 </body>
 
 </html>

@@ -13,17 +13,80 @@ body {
 }
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 1600px;
-  padding: 0 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 50px 10px;
+  display: grid;
+  place-items: center;
 }
 
+
+/* HEADER ↓ */
+
 .header {
+  width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  margin: 20px 0 50px 0;
+  padding: 20px;
+  justify-content: space-between;
 }
+
+.header__nav {
+  display: flex;
+}
+
+.header__nav-item {
+  padding: 0 10px;
+  display: block;
+  transition-duration: 0.5s;
+  position: relative;
+}
+
+.header__nav-btn,
+.drop__item-btn {
+  background: transparent;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.header__nav-btn:hover {
+  transform: scale(1.1);
+}
+
+.header__nav-btn:active {
+  transform: scale(1.2);
+}
+
+.drop {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  padding-top: 0.5rem;
+  left: 0;
+  display: none;
+  transform: translateX(10px);
+}
+
+.header__nav-item:hover > .drop,
+.drop:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+.drop__item-btn:hover {
+  transform: scale(1.1);
+}
+
+.drop__item-btn:active {
+  transform: scale(1.2);
+}
+
+/* HEADER ↑ */
 
 .main {
   display: flex;
@@ -103,7 +166,7 @@ details {
   margin-right: 50px;
 }
 
-/* buttons start */
+/* BUTTONS ↓ */
 
 .hbtn, .inputfile + label {
   position: relative;
@@ -158,7 +221,7 @@ details {
   transition: border-top-width 0.1s ease 0s, height 0.2s ease 0.1s, width 0.2s ease 0.2s, margin 0.2s ease 0.2s;
 } 
 
-/* buttons end */
+/* BUTTONS ↑ */
 
 .inputfile {
 	width: 0.1px;

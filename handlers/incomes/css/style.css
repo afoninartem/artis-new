@@ -1,0 +1,167 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 50px 10px;
+  display: grid;
+  place-items: center;
+}
+
+.alt-wrapper {
+  margin-top: 30px;
+}
+
+/* HEADER ↓ */
+
+.header {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.header__nav {
+  display: flex;
+}
+
+.header__nav-item {
+  padding: 0 10px;
+  display: block;
+  transition-duration: 0.5s;
+  position: relative;
+}
+
+.header__nav-btn,
+.drop__item-btn {
+  background: transparent;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.header__nav-btn:hover {
+  transform: scale(1.1);
+}
+
+.header__nav-btn:active {
+  transform: scale(1.2);
+}
+
+.drop {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  padding-top: 0.5rem;
+  left: 0;
+  display: none;
+  transform: translateX(10px);
+}
+
+.header__nav-item:hover > .drop,
+.drop:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+.drop__item-btn:hover {
+  transform: scale(1.1);
+}
+
+.drop__item-btn:active {
+  transform: scale(1.2);
+}
+
+/* HEADER ↑ */
+
+.container,
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.hbtn,
+.inputfile + label {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  padding: 8px 20px;
+  margin: 0px 3px 6px;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  white-space: nowrap;
+  z-index: 0;
+  width: 500px;
+  background-color: white;
+}
+
+.hbtn i,
+.inputfile + label {
+  padding-right: 8px;
+}
+
+.hb-border-bottom-br3,
+.inputfile + label {
+  position: relative;
+  transition-duration: 0.3s;
+  overflow: visible;
+  box-sizing: border-box;
+  border: none;
+  padding: 10px 22px;
+}
+
+.hb-border-bottom-br3::after,
+.inputfile + label::after {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  border: 2px solid rgb(0, 0, 0);
+  z-index: 2;
+  margin: 0px;
+  left: 0px;
+  bottom: 0px;
+  border-top-width: 2px;
+  transition: border-top-width 0.1s ease 0.2s, height 0.2s ease 0.1s,
+    width 0.2s ease 0s, margin 0.2s ease 0s;
+}
+
+.hb-border-bottom-br3:hover::after,
+.inputfile + label:hover::after {
+  width: 60%;
+  height: 0px;
+  border-width: 0px 2px 2px;
+  margin: 0px 20%;
+  transition: border-top-width 0.1s ease 0s, height 0.2s ease 0.1s,
+    width 0.2s ease 0.2s, margin 0.2s ease 0.2s;
+}

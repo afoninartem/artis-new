@@ -1,15 +1,3 @@
-//menu buttons
-document.querySelectorAll(".drop__item-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    document.querySelector("head").innerHTML +=
-      '<link rel="import" href="http://artemafonin.ru/handlers/dinners/index.html">';
-    const modulePage = document.querySelector('link[rel="import"]').import;
-    const content = modulePage.querySelector('wrapper');
-
-    document.body.appendChild(content.cloneNode(true));
-  });
-});
-
 //carousel
 const carouselSlide = document.querySelector(".carousel-slide");
 const carouselImages = document.querySelectorAll(".carousel-slide img");

@@ -1,16 +1,13 @@
 html {
   box-sizing: border-box;
 }
-
-*,
-*::before,
-*::after {
+*, *:before, *:after {
   box-sizing: inherit;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
   font-size: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .wrapper {
@@ -20,6 +17,7 @@ body {
   display: grid;
   place-items: center;
 }
+
 
 /* HEADER ↓ */
 
@@ -86,60 +84,74 @@ body {
   transform: scale(1.2);
 }
 
-/* HEADER ↑ */
-
 .main {
   margin-top: 50px;
 }
 
+/* HEADER ↑ */
 
-/*  CAROUSEL ↓ */
-
-.carousel-container {
-  position: relative;
-  width: 759px;
-  margin: auto;
-  /* border-radius: 6px; */
-  box-shadow: 5px 1px 15px 0px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 5px 1px 15px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 5px 1px 15px 0px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-}
-
-.carousel-slide {
+form {
   display: flex;
-  height: 571px;
-}
-.carousel-slide img {
-  object-fit: cover;
+  flex-direction: column;
+  margin-bottom: 30px;
 }
 
-#prevBtn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  left: 5%;
-  font-size: 30px;
-  /* opacity: 0.7; */
-  color: #000;
-}
-#prevBtn:hover {
-  opacity: 1;
-  cursor: pointer;
+label, p {
+  margin-bottom: 5px;
+  font-size: 20px;
 }
 
-#nextBtn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  right: 5%;
-  font-size: 30px;
-  /* opacity: 0.7; */
-  color: #000;
+input {
+  margin-bottom: 20px;
 }
-#nextBtn:hover {
-  opacity: 1;
-  cursor: pointer;
+
+.button {
+  flex: 1 1 auto;
+  padding: 16px 32px;
+}
+
+.hidden__button {
+  display: none;
+}
+
+.print-block {
+  display: none;
+  border: 0.5px solid black;
+  grid-template-columns: max-content 1fr 1fr;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  background: rgba(230, 224, 224, 0.753);
+  padding: 15px;
+  border: 0.5px solid black;
+  text-align: center;
+}
+
+.title:nth-last-child(-n+2) {
+  text-align: right;
+}
+
+.shop-name, .quantity {
+  padding: 10px;
+  border: 0.5px solid black;
+}
+
+.quantity {
+  text-align: right;
+}
+
+@media print {
+  body {
+    visibility: hidden;
+  }
+  .print-block, .print-block * {
+    visibility: visible;
+  }
+  .print-block {
+    position: absolute;
+    top: 50px;
+  }
 }

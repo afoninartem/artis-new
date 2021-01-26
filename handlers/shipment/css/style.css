@@ -9,29 +9,103 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .wrapper {
-  /* max-width: 1940px; */
+  max-width: 1400px;
   margin: 0 auto;
   padding: 50px 10px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  place-items: center;
 }
 
+.alt-wrapper {
+  margin-top: 30px;
+}
+
+/* HEADER ↓ */
+
 .header {
+  width: 100%;
   display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.header__nav {
+  display: flex;
+}
+
+.header__nav-item {
+  padding: 0 10px;
+  display: block;
+  transition-duration: 0.5s;
+  position: relative;
+}
+
+.header__nav-btn,
+.drop__item-btn {
+  background: transparent;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.header__nav-btn:hover {
+  transform: scale(1.1);
+}
+
+.header__nav-btn:active {
+  transform: scale(1.2);
+}
+
+.drop {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  padding-top: 0.5rem;
+  left: 0;
+  display: none;
+  transform: translateX(10px);
+}
+
+.header__nav-item:hover > .drop,
+.drop:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+.drop__item-btn:hover {
+  transform: scale(1.1);
+}
+
+.drop__item-btn:active {
+  transform: scale(1.2);
+}
+
+/* HEADER ↑ */
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+}
+
+.inputs__first-row {
+  display: flex;
+  /* flex-direction: column; */
   align-items: center;
 }
 
-/* .upload {
-  margin-bottom: 30px;
-} */
-
 .table-create {
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: space-between;
 }
@@ -52,7 +126,6 @@ body {
 .table-info div {
   display: flex;
   flex-direction: column;
-  /* font-size: 20px; */
 }
 
 .table {
@@ -164,7 +237,6 @@ ol li span {
   display: none;
 }
 
-
 @media print {
   body {
     line-height: 1.2;
@@ -239,7 +311,6 @@ ol li span {
 }
 
 .tip span {
-  border-radius: 5px 5px 5px 5px;
   visibility: hidden;
   position: absolute;
   left: 30%;
@@ -319,16 +390,20 @@ ol li span {
     width 0.2s ease 0.2s, margin 0.2s ease 0.2s;
 }
 
-/* buttons end */
 
 button:nth-child(-n + 4) {
   font-weight: bold;
 }
 
-button:last-child {
-  /* margin-top: 30px; */
-  margin-left: 30px;
+#label1 {
+  line-height: 1.15;
 }
+
+#help {
+  font-weight: normal;
+}
+
+/* buttons end */
 
 .inputfile {
   width: 0.1px;
@@ -404,7 +479,6 @@ button:last-child {
 
 .underline span {
   text-decoration: underline;
-  /* font-weight: bold; */
   background: yellow;
   padding: -5px;
 }
@@ -450,5 +524,5 @@ button:last-child {
 }
 
 .test {
-  color: rgba(240, 198, 12, 0.3)
+  color: rgba(240, 198, 12, 0.3);
 }

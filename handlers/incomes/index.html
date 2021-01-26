@@ -2,20 +2,17 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Обработки Артис</title>
-  <link rel="stylesheet" href="./css/reset.css" />
-  <link rel="stylesheet" href="./css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/2ddb2cf10f.js" crossorigin="anonymous"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отчет по поступленям</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
   <header class="header wrapper">
     <div class="header__logo">
-      <a href="./index.html">
+      <a href="../../index.html">
         <svg width="169" height="43" viewBox="0 0 169 43" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="0.5" y="0.5" width="19" height="19" rx="3.5" fill="white" stroke="#121010" />
           <rect x="23.8651" width="20" height="20" rx="4" fill="#121010" />
@@ -31,7 +28,7 @@
       <li class="header__nav-item"><a class="header__nav-btn" value="maintenance">АХО</a>
         <ul class="drop">
           <li class="drop__item">
-            <a href="./handlers/dinners/index.html" class="drop__item-btn a-btn">Обеды</a>
+            <a href="../dinners/index.html" class="drop__item-btn a-btn">Обеды</a>
           </li>
         </ul>
       </li>
@@ -42,40 +39,30 @@
       </li>
       <li class="header__nav-item"><a class="header__nav-btn" value="warehouse">СКЛАД</a>
         <ul class="drop">
-          <li class="drop__item"><a href="./handlers/stocks/index.html" class="drop__item-btn">Акции</a></li>
-          <li class="drop__item"><a href="./handlers/komus/index.html" class="drop__item-btn">Комус</a></li>
-          <li class="drop__item"><a href="./handlers/cards/index.html" class="drop__item-btn">Визитки</a></li>
-          <li class="drop__item"><a href="./handlers/incomes/index.html" class="drop__item-btn">Поступления</a></li>
-          <li class="drop__item"><a href="./handlers/shipment/index.html" class="drop__item-btn">Отгрузки</a></li>
-          <li class="drop__item"><a href="./handlers/need/index.html" class="drop__item-btn">Потребность</a></li>
+          <li class="drop__item"><a href="../stocks/index.html" class="drop__item-btn">Акции</a></li>
+          <li class="drop__item"><a href="../komus/index.html" class="drop__item-btn">Комус</a></li>
+          <li class="drop__item"><a href="../cards/index.html" class="drop__item-btn">Визитки</a></li>
+          <li class="drop__item"><a href="../incomes/index.html" class="drop__item-btn">Поступления</a></li>
+          <li class="drop__item"><a href="../shipment/index.html" class="drop__item-btn">Отгрузки</a></li>
+          <li class="drop__item"><a href="../need/index.html" class="drop__item-btn">Потребность</a></li>
         </ul>
       </li>
     </ul>
   </header>
-  <main class="main">
-    <div class="carousel-container">
-      <i class="fas fa-arrow-left" id="prevBtn"></i>
-      <i class="fas fa-arrow-right" id="nextBtn"></i>
-      <div class="carousel-slide">
-        <img src="./img/pic-11.jpeg" alt="12" id="lastClone" />
-        <img src="./img/pic-0.jpeg" alt="0" />
-        <img src="./img/pic-1.jpeg" alt="1" />
-        <img src="./img/pic-2.jpeg" alt="2" />
-        <img src="./img/pic-3.jpeg" alt="3" />
-        <img src="./img/pic-4.jpeg" alt="4" />
-        <img src="./img/pic-5.jpeg" alt="5" />
-        <img src="./img/pic-6.jpeg" alt="6" />
-        <img src="./img/pic-7.jpeg" alt="7" />
-        <img src="./img/pic-8.jpeg" alt="8" />
-        <img src="./img/pic-9.jpeg" alt="9" />
-        <img src="./img/pic-10.jpeg" alt="10" />
-        <img src="./img/pic-11.jpeg" alt="11" />
-        <img src="./img/pic-0.jpeg" alt="0" id="firstClone" />
-      </div>
+  <div class="wrapper">
+    <div class="container">
+      <form action="" class="input-file">
+        <input class="inputfile" type="file" name="file1" id="file1" accept=".csv">
+        <label for="file1">Поступления и отгрузки рекламной продукции</label>
+        <input class="inputfile" type="file" name="file2" id="file2" accept=".csv">
+        <label for="file2">Анализ рекламной продукции по поступленям</label>
+        <input class="inputfile" type="file" name="file3" id="file3" accept=".csv">
+        <label for="file3">Инструкции. Участок сб. фурнитуры 1</label>
+      </form>
+      <button class="result hbtn hb-border-bottom-br3">Скачать</button>
     </div>
-  </main>
-
-  <script src="script.js"></script>
+  </div>
+  <script src="./script.js"></script>
 </body>
 
 </html>
