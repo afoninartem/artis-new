@@ -86,6 +86,12 @@ body {
   transform: scale(1.2);
 }
 
+.vue-logo:before {
+  content: url(../../../img/vue-logo.svg);
+  position: absolute;
+  left: -15%;
+}
+
 /* HEADER ↑ */
 
 .main {

@@ -84,11 +84,17 @@ body {
   transform: scale(1.2);
 }
 
-.main {
-  margin-top: 50px;
+.vue-logo:before {
+  content: url(../../../img/vue-logo.svg);
+  position: absolute;
+  left: -15%;
 }
 
 /* HEADER ↑ */
+
+.main {
+  margin-top: 50px;
+}
 
 form {
   display: flex;

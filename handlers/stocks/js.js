@@ -392,29 +392,19 @@ const choco5Helper = (obj) => {
   return Math.min(consChoco5, foreChoco5);
 };
 
-
-function isInteger(num) {
-  return (num ^ 0) === num;
-}
-
 const candyHelper = (obj) => {
   let divider;
-  if (obj.forecast.candy > 1 && isInteger(obj.forecast.candy)) {
+  obj.forecast.candy = Math.ceil(obj.forecast.candy);
+  if (obj.forecast.candy > 1) {
     switch (obj.forecast.candy.toString().length) {
       case 2:
         divider = 10;
-        console.log(`length: ${obj.forecast.candy.toString().length}, ${obj.forecast.candy.toString()}`);
-        console.log(obj);
         break;
       case 3:
         divider = 1000;
-        console.log(`length: ${obj.forecast.candy.toString().length}, ${obj.forecast.candy.toString()}`);
-        console.log(obj);
         break;
       case 4:
         divider = 1000;
-        console.log(`length: ${obj.forecast.candy.toString().length}, ${obj.forecast.candy.toString()}`);
-        console.log(obj);
         break;
       default:
         divider = 1;
@@ -425,7 +415,7 @@ const candyHelper = (obj) => {
   let candy = obj.forecast.candy / divider;
   const cons = obj.consumption.candy;
   return candy - cons >= 3
-    ? (candy).toString().replace(".", ",")
+    ? candy.toString().replace(".", ",")
     : candy.toString().replace(".", ",");
 };
 
