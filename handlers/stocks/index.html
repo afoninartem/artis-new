@@ -61,7 +61,7 @@
         <p class="last-info"></p>
         <label for="shops">Если прошло больше двух недель, рекомендуется загрузить актуальный список салонов в формате
           CSV:</label>
-        <input type="file" name="full-list" id="shops">
+        <input type="file" name="full-list" id="shops" accept=".csv">
       </div>
       <div class="block stop">
         <p>Не включать в таблицу следующие салоны:</p>
@@ -75,16 +75,18 @@
       </div>
       <div class="block block-2">
         <p>Перед загрузкой следующего файла укажите какую информацию необходимо добавить в таблицу:</p>
-        <label><input type="checkbox" class="checkbox" value="male" id="male">Мужчины</label>
-        <label><input type="checkbox" class="checkbox" value="female" id="female">Женщины</label>
-        <label><input type="checkbox" class="checkbox" value="children" id="children">Дети</label>
-        <label><input type="checkbox" class="checkbox" value="newspapers" id="newspapers">Газеты</label>
+        <div class="checkboxes">
+          <label><input type="checkbox" class="checkbox" value="male" id="male">Мужчины</label>
+          <label><input type="checkbox" class="checkbox" value="female" id="female">Женщины</label>
+          <label><input type="checkbox" class="checkbox" value="children" id="children">Дети</label>
+          <label><input type="checkbox" class="checkbox" value="newspapers" id="newspapers">Газеты</label>
+        </div>
         <label for="presents">Загрузить розничную расстановку в формате CSV:</label>
-        <input type="file" name="presents" id="presents">
+        <input type="file" name="presents" id="presents" accept=".csv">
       </div>
       <div class="block block-3">
         <label for="commonReport">Загрузить отчет по акции в формате CSV:</label>
-        <input type="file" name="full-list" id="commonReport" required>
+        <input type="file" name="full-list" id="commonReport" required accept=".csv">
       </div>
       <button type="submit" class="button" id="download">Скачать CSV</button>
     </form>

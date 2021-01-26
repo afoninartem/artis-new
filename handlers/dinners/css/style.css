@@ -100,6 +100,10 @@ body {
   margin: 0 auto;
 }
 
+.forms {
+  display: flex;
+}
+
 .buttons-block {
   display: flex;
   justify-content: space-between;
@@ -238,39 +242,6 @@ details {
 	z-index: -1;
 }
 
-.manual {
-  margin-top: 50px;
-  margin-left: 20px;
-}
-
-.manual__header {
-  font-size: 20px;
-  margin-bottom: 15px;
-}
-
-ol li {
-  margin-bottom: 10px;
-}
-
-ol li span {
-  font-size: 18px;
-  font-style: bold;
-}
-
-.tip span {
-  border-radius: 5px 5px 5px 5px;
-  visibility: hidden;
-  position: absolute;
-  left: 30%;
-  top: 150px;
-  background: #fff;
-  box-shadow: -2px 2px 10px -1px #333;
-  border-radius: 5px;
-}
-.tip:hover span {
-  visibility: visible;
-}
-
 #label1, #label2 {
   width: 300px;
 }
@@ -311,6 +282,88 @@ ol li span {
   break-inside: avoid;
   /* break-before: always; */
 }
+
+/* POPUP ↓ */
+
+.popup {
+  position: absolute;
+  display: none;
+  place-items: center;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* overflow:hidden; */
+  top: 0px;
+}
+.popup .manual {
+  width: 80%;
+  padding: 20px;
+  background-color: #c5c5c5;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #000;
+}
+
+.manual__header {
+  position: relative;
+}
+
+.tip span {
+  border-radius: 5px 5px 5px 5px;
+  visibility: hidden;
+  position: absolute;
+  left: 30%;
+  top: 150px;
+  background: #fff;
+  box-shadow: -2px 2px 10px -1px #333;
+  border-radius: 5px;
+}
+
+.tip:hover span {
+  visibility: visible;
+} 
+
+.close {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.warehouse p {
+  background-color: yellow;
+}
+.warehouse:empty {
+  background: transparent;
+}
+
+.underline span {
+  text-decoration: underline;
+  background: yellow;
+  padding: -5px;
+}
+
+/* POPUP ↑ */
 
 @media print {
   body {

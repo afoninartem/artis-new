@@ -190,6 +190,12 @@ input {
   text-align: center;
 }
 
+.checkboxes {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .checkbox {
   margin-right: 10px;
 }
@@ -202,6 +208,12 @@ input {
   text-decoration: none;
   color: black;
   padding: 10px;
+  border: none;
+  background: transparent;
+}
+
+.tip-list-item__link:hover {
+  transform: scale(1.05);
 }
 
 .stop-preview {

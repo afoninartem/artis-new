@@ -1,117 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Подсчёт обедов</title>
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="./css/print.css" media="print">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header class="header wrapper">
-      <div class="header__logo">
-        <a href="../../index.html">
-          <svg width="169" height="43" viewBox="0 0 169 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.5" y="0.5" width="19" height="19" rx="3.5" fill="white" stroke="#121010" />
-            <rect x="23.8651" width="20" height="20" rx="4" fill="#121010" />
-            <rect x="23.8651" y="22.7056" width="20" height="20" rx="4" fill="#121010" />
-            <rect y="22.7056" width="20" height="20" rx="4" fill="#121010" />
-            <path
-              d="M60.1094 21.7031H69.4727L66.5508 13.3359C66.3737 12.8268 66.0859 12.0189 65.6875 10.9121C65.3112 9.7832 65.0456 8.9974 64.8906 8.55469H64.6914C63.7617 11.2773 63.2194 12.8711 63.0645 13.3359L60.1094 21.7031ZM53.8672 31L63.1641 6.13086H66.418L75.7148 31H72.793L70.2695 23.8281H59.3125L56.7891 31H53.8672ZM79.0352 31V6.13086H88.3984C90.8112 6.13086 92.7148 6.79492 94.1094 8.12305C95.526 9.45117 96.2344 11.2109 96.2344 13.4023C96.2344 15.6602 95.515 17.4421 94.0762 18.748C92.6374 20.054 90.7448 20.707 88.3984 20.707H81.6914V31H79.0352ZM81.6914 18.4824H88C89.7487 18.4824 91.099 18.0618 92.0508 17.2207C93.0247 16.3574 93.5117 15.0846 93.5117 13.4023C93.5117 11.7643 93.0247 10.5247 92.0508 9.68359C91.099 8.82031 89.7266 8.38867 87.9336 8.38867H81.6914V18.4824ZM97.9609 8.38867V6.13086H115.758V8.38867H108.188V31H105.531V8.38867H97.9609ZM119.543 6.13086H122.199V22.1016C122.199 23.806 122.144 25.4108 122.033 26.916H122.166L123.926 23.7949L134.318 6.13086H137.24V31H134.584V15.0625C134.584 13.4023 134.65 11.7975 134.783 10.248H134.617L132.924 13.2031L122.465 31H119.543V6.13086ZM142.42 18.582C142.42 14.5312 143.405 11.3438 145.375 9.01953C147.345 6.69531 149.902 5.5332 153.045 5.5332C154.993 5.5332 156.642 6.07552 157.992 7.16016C159.365 8.22266 160.394 9.49544 161.08 10.9785L158.822 11.7754C157.339 9.11914 155.391 7.79102 152.979 7.79102C150.588 7.79102 148.684 8.77604 147.268 10.7461C145.851 12.694 145.143 15.306 145.143 18.582C145.143 21.9023 145.862 24.5254 147.301 26.4512C148.74 28.3548 150.632 29.3066 152.979 29.3066C154.462 29.3066 155.757 28.8971 156.863 28.0781C157.97 27.237 158.8 26.2077 159.354 24.9902L161.744 25.7539C160.992 27.3698 159.896 28.7533 158.457 29.9043C157.018 31.0332 155.214 31.5977 153.045 31.5977C149.924 31.5977 147.367 30.4466 145.375 28.1445C143.405 25.8203 142.42 22.6328 142.42 18.582Z"
-              fill="#121010" />
-          </svg>
-        </a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Подсчёт обедов</title>
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/print.css" media="print">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header wrapper">
+    <div class="header__logo">
+      <a href="../../index.html">
+        <svg width="169" height="43" viewBox="0 0 169 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="19" height="19" rx="3.5" fill="white" stroke="#121010" />
+          <rect x="23.8651" width="20" height="20" rx="4" fill="#121010" />
+          <rect x="23.8651" y="22.7056" width="20" height="20" rx="4" fill="#121010" />
+          <rect y="22.7056" width="20" height="20" rx="4" fill="#121010" />
+          <path
+            d="M60.1094 21.7031H69.4727L66.5508 13.3359C66.3737 12.8268 66.0859 12.0189 65.6875 10.9121C65.3112 9.7832 65.0456 8.9974 64.8906 8.55469H64.6914C63.7617 11.2773 63.2194 12.8711 63.0645 13.3359L60.1094 21.7031ZM53.8672 31L63.1641 6.13086H66.418L75.7148 31H72.793L70.2695 23.8281H59.3125L56.7891 31H53.8672ZM79.0352 31V6.13086H88.3984C90.8112 6.13086 92.7148 6.79492 94.1094 8.12305C95.526 9.45117 96.2344 11.2109 96.2344 13.4023C96.2344 15.6602 95.515 17.4421 94.0762 18.748C92.6374 20.054 90.7448 20.707 88.3984 20.707H81.6914V31H79.0352ZM81.6914 18.4824H88C89.7487 18.4824 91.099 18.0618 92.0508 17.2207C93.0247 16.3574 93.5117 15.0846 93.5117 13.4023C93.5117 11.7643 93.0247 10.5247 92.0508 9.68359C91.099 8.82031 89.7266 8.38867 87.9336 8.38867H81.6914V18.4824ZM97.9609 8.38867V6.13086H115.758V8.38867H108.188V31H105.531V8.38867H97.9609ZM119.543 6.13086H122.199V22.1016C122.199 23.806 122.144 25.4108 122.033 26.916H122.166L123.926 23.7949L134.318 6.13086H137.24V31H134.584V15.0625C134.584 13.4023 134.65 11.7975 134.783 10.248H134.617L132.924 13.2031L122.465 31H119.543V6.13086ZM142.42 18.582C142.42 14.5312 143.405 11.3438 145.375 9.01953C147.345 6.69531 149.902 5.5332 153.045 5.5332C154.993 5.5332 156.642 6.07552 157.992 7.16016C159.365 8.22266 160.394 9.49544 161.08 10.9785L158.822 11.7754C157.339 9.11914 155.391 7.79102 152.979 7.79102C150.588 7.79102 148.684 8.77604 147.268 10.7461C145.851 12.694 145.143 15.306 145.143 18.582C145.143 21.9023 145.862 24.5254 147.301 26.4512C148.74 28.3548 150.632 29.3066 152.979 29.3066C154.462 29.3066 155.757 28.8971 156.863 28.0781C157.97 27.237 158.8 26.2077 159.354 24.9902L161.744 25.7539C160.992 27.3698 159.896 28.7533 158.457 29.9043C157.018 31.0332 155.214 31.5977 153.045 31.5977C149.924 31.5977 147.367 30.4466 145.375 28.1445C143.405 25.8203 142.42 22.6328 142.42 18.582Z"
+            fill="#121010" />
+        </svg>
+      </a>
+    </div>
+    <ul class="header__nav">
+      <li class="header__nav-item"><a class="header__nav-btn" value="maintenance">АХО</a>
+        <ul class="drop">
+          <li class="drop__item">
+            <a href="../dinners/index.html" class="drop__item-btn a-btn">Обеды</a>
+          </li>
+        </ul>
+      </li>
+      <li class="header__nav-item"><a class="header__nav-btn" value="personal">ПЕРСОНАЛ</a>
+        <ul class="drop">
+          <li class="drop__item"><a class="drop__item-btn">УРВ</a></li>
+        </ul>
+      </li>
+      <li class="header__nav-item"><a class="header__nav-btn" value="warehouse">СКЛАД</a>
+        <ul class="drop">
+          <li class="drop__item"><a href="../stocks/index.html" class="drop__item-btn">Акции</a></li>
+          <li class="drop__item"><a href="../komus/index.html" class="drop__item-btn">Комус</a></li>
+          <li class="drop__item"><a href="../cards/index.html" class="drop__item-btn">Визитки</a></li>
+          <li class="drop__item"><a href="../incomes/index.html" class="drop__item-btn">Поступления</a></li>
+          <li class="drop__item"><a href="../shipment/index.html" class="drop__item-btn">Отгрузки</a></li>
+          <li class="drop__item"><a href="../need/index.html" class="drop__item-btn vue-logo">Потребность</a></li>
+        </ul>
+      </li>
+    </ul>
+  </header>
+  <div class="wrapper">
+    <div class="forms">
+      <form action="" class="data-base">
+        <!-- <p class="data-base__text"></p> -->
+        <input class="inputfile" type="file" name="dataBase" id="dataBase" accept=".csv" />
+        <label id="label1" for="dataBase">Загрузить данные из 1С7</label>
+      </form>
+      <form action="" class="dinners-list">
+        <input class="inputfile " type="file" name="dinnersList" id="dinnersList" accept=".csv" />
+        <label id="label2" for="dinnersList">Загрузить данные из Senesys</label>
+      </form>
+      <button type="button" class="hbtn hb-border-bottom-br3" id="help" onclick="toggleManual()">
+        Помощь
+      </button>
+    </div>
+    <main class="main">
+      <div class="buttons-block">
+        <button type="button" class="hbtn hb-border-bottom-br3" onclick="getArtis()">
+          Артис
+        </button>
+        <button type="button" class="hbtn hb-border-bottom-br3" onclick="getGWD()">
+          Гуд Вуд
+        </button>
+        <button type="button" class="hbtn hb-border-bottom-br3" onclick="getEmul()">
+          Эмульком
+        </button>
       </div>
-      <ul class="header__nav">
-        <li class="header__nav-item"><a class="header__nav-btn" value="maintenance">АХО</a>
-          <ul class="drop">
-            <li class="drop__item">
-              <a href="../dinners/index.html" class="drop__item-btn a-btn">Обеды</a>
-            </li>
-          </ul>
-        </li>
-        <li class="header__nav-item"><a class="header__nav-btn" value="personal">ПЕРСОНАЛ</a>
-          <ul class="drop">
-            <li class="drop__item"><a class="drop__item-btn">УРВ</a></li>
-          </ul>
-        </li>
-        <li class="header__nav-item"><a class="header__nav-btn" value="warehouse">СКЛАД</a>
-          <ul class="drop">
-            <li class="drop__item"><a href="../stocks/index.html"
-                class="drop__item-btn">Акции</a></li>
-            <li class="drop__item"><a href="../komus/index.html"
-                class="drop__item-btn">Комус</a></li>
-            <li class="drop__item"><a href="../cards/index.html"
-                class="drop__item-btn">Визитки</a></li>
-            <li class="drop__item"><a href="../incomes/index.html"
-                class="drop__item-btn">Поступления</a></li>
-            <li class="drop__item"><a href="../shipment/index.html"
-                class="drop__item-btn">Отгрузки</a></li>
-            <li class="drop__item"><a href="../need/index.html"
-                class="drop__item-btn">Потребность</a></li>
-          </ul>
-        </li>
-      </ul>
-    </header>
-    <div class="wrapper">
-      <div class="forms">
-        <form action="" class="data-base">
-          <!-- <p class="data-base__text"></p> -->
-          <input class="inputfile" type="file" name="dataBase" id="dataBase" accept=".csv"/>
-          <label id="label1" for="dataBase">Загрузить данные из 1С7</label>
-        </form>
-        <form action="" class="dinners-list">
-          <input class="inputfile " type="file" name="dinnersList" id="dinnersList" accept=".csv"/>
-          <label id="label2" for="dinnersList">Загрузить данные из Senesys</label>
-        </form>
-      </div>
-      <main class="main">
-        <div class="buttons-block">
-          <button
-            type="button"
-            class="hbtn hb-border-bottom-br3"
-            onclick="getArtis()"
-          >
-            Артис
-          </button>
-          <button
-            type="button"
-            class="hbtn hb-border-bottom-br3"
-            onclick="getGWD()"
-          >
-            Гуд Вуд
-          </button>
-          <button
-            type="button"
-            class="hbtn hb-border-bottom-br3"
-            onclick="getEmul()"
-          >
-            Эмульком
-          </button>
-        </div>
-        <div class="output"></div>
-        <div class="print"></div>
-      </main>
+      <div class="output"></div>
+      <div class="print"></div>
+    </main>
+    <div class="popup">
       <div class="manual">
+        <h1 class="manual__header">Инструкция по применению<span onclick="toggleManual()" class="close"></span></h1>
         <ol>
           <li>
-            <span>1</span> В 1С7 выгрузить отчет <a class="tip" href="">Планирование выдачи подарков<span><img width="1200" src="./img/Report.png" alt=""></span></a>  или попросить его у Афонина Артема (afonin.a@artis21.ru, 4575)
+            <span>1</span> В 1С7 выгрузить отчет <a class="tip" href="">Планирование выдачи подарков<span><img
+                  width="1200" src="./img/Report.png" alt=""></span></a> или попросить его у Афонина Артема
+            (afonin.a@artis21.ru, 4575)
           </li>
           <li><span>2</span> Выгрузить нужные данные из Senesys</li>
-          <li><span>3</span> Получившиеся файлы <a class="tip" href="">сохранить в формате CSV<span><img src="./img/SaveCSV.PNG" alt=""></span></a></li>
+          <li><span>3</span> Получившиеся файлы <a class="tip" href="">сохранить в формате CSV<span><img
+                  src="./img/SaveCSV.PNG" alt=""></span></a></li>
           <li><span>4</span> Загрузить их через интерфейс программы</li>
         </ol>
       </div>
     </div>
-    <script src="./script2.js"></script>
-  </body>
+  </div>
+  <script src="./script2.js"></script>
+</body>
+
 </html>

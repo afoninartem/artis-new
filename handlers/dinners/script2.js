@@ -359,3 +359,12 @@ const outputData = (obj) => {
         });
   }
 };
+
+//popup help
+const toggleManual = () => {
+  const popup = document.querySelector(`.popup`);
+  let visibility = window.getComputedStyle(popup);
+  visibility.display === `none`
+    ? (popup.style.display = `grid`)
+    : (popup.style.display = `none`);
+};
