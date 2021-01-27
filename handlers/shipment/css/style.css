@@ -334,7 +334,7 @@ ol li span {
   place-items: center;
 }
 
-/* buttons start  */
+/* buttons ↓  */
 
 .hbtn,
 .inputfile + label {
@@ -352,6 +352,7 @@ ol li span {
   z-index: 0;
   width: 250px;
   background-color: white;
+  cursor: auto;
 }
 
 .hbtn i,
@@ -405,11 +406,15 @@ button:nth-child(-n + 4) {
   line-height: 1.15;
 }
 
+label {
+  user-select: none;
+}
+
 #help {
   font-weight: normal;
 }
 
-/* buttons end */
+/* buttons ↑ */
 
 .inputfile {
   width: 0.1px;
@@ -491,7 +496,7 @@ button:nth-child(-n + 4) {
 
 /* POPUP ↑ */
 
-/* WARNING */
+/* WARNING ↓ */
 
 .warning-popup {
   position: absolute;
@@ -530,6 +535,8 @@ button:nth-child(-n + 4) {
 .warn-orders__item {
   margin: 5px;
 }
+
+/* WARNING ↑ */
 
 .test {
   color: rgba(240, 198, 12, 0.3);

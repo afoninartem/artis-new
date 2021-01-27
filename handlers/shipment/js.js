@@ -13,7 +13,6 @@ const tableHeaderWithoutTowels = [
   `Упак.`,
   `Папки`,
   `Шамп.`,
-  // `Полот.`, подставляется автоматом, если надо.
   `Другое`,
   `Кол-во мест`,
   `Заявка`,
@@ -74,8 +73,6 @@ let darkColors = [
 
 const colorNN = `rgba(0, 128, 0, 0.4)`;
 const colorSPB = `rgba(245, 161, 15, 0.4)`;
-
-const highLigth = [`обои`, `Комус`, `сетка`, `Бумага`, `Декор`];
 
 //test for colors
 // colors.forEach(color => {
@@ -426,7 +423,8 @@ const mainTable = (currentArr) => {
             mat[0].includes(`Комус`) ||
             mat[0].includes(`сетка`) ||
             mat[0].includes(`Бумага`) ||
-            mat[0].includes(`Декор`)
+            mat[0].includes(`Декор`) ||
+            mat[0].includes(`браз`)
           ) {
             other.innerHTML += `<div class="underline"><span>${mat[0]} - ${mat[1]}</span></div`;
           } else {

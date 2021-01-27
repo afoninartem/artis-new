@@ -10,6 +10,7 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
 .wrapper {
@@ -28,6 +29,8 @@ body {
   display: flex;
   padding: 20px;
   justify-content: space-between;
+  font-size: 20px;
+
 }
 
 .header__nav {
@@ -244,6 +247,7 @@ details {
 
 #label1, #label2 {
   width: 300px;
+  line-height: 1.2;
 }
 
 .print-btn {

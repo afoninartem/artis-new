@@ -31,6 +31,18 @@ shops.map((shop) => {
   obj.newspapers = 0;
   presents.push(obj);
 });
+
+// checkbox
+let checked;
+document.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+  checkbox.addEventListener("change", () => {
+    checked = Array.from(document.querySelectorAll("input[type=checkbox]"))
+      .filter((el) => el.checked)
+      .map((el) => el.value);
+    console.log(checked);
+  });
+});
+
 let shopsReports = [];
 const shopsMoscow = [];
 const shopsRegion = [];
@@ -38,6 +50,7 @@ let reportsMoscow = [];
 let reportsRegion = [];
 const shopsMoscowForCalc = [];
 const shopsRegionForCalc = [];
+
 //TOTAL SUMMS
 const tT = {};
 const tTP = {};
@@ -103,7 +116,8 @@ const createSumsString = (obj) => {
   const checked = Array.from(document.querySelectorAll(".checkbox"))
     .filter((el) => el.checked)
     .map((el) => (el = el.value));
-  if (checked.includes("male" || "female")) str += `;${obj.presents}`;
+  if (checked.includes("male") || checked.includes("female"))
+    str += `;${obj.presents}`;
   if (checked.includes("children")) str += `;${obj.children}`;
   if (checked.includes("newspapers")) str += `;${obj.newspapers}`;
   return str;
@@ -309,20 +323,22 @@ document.querySelector("#presents").onchange = function () {
       .split(`\n`)
       .map((el) => el.split(";"))
       .filter((el) => !el.includes(""));
-    console.log(rows);
     // adding cols in table
-    const checked = Array.from(document.querySelectorAll(".checkbox"))
+    const checkedboxes = Array.from(document.querySelectorAll(".checkbox"))
       .filter((el) => el.checked)
       .map((el) => (el = el.value));
-    if (checked.includes("male" || "female")) {
+    console.log(checkedboxes);
+    if (checkedboxes.includes("male") || checkedboxes.includes("female")) {
       materials.push("presents");
+      console.log(materials);
       tableHeader += `;ВЗР`;
     }
-    if (checked.includes("children")) {
+    console.log(tableHeader);
+    if (checkedboxes.includes("children")) {
       materials.push("children");
       tableHeader += `;ДЕТ`;
     }
-    if (checked.includes("newspapers")) {
+    if (checkedboxes.includes("newspapers")) {
       materials.push("newspapers");
       tableHeader += `;Газета`;
     }
@@ -336,6 +352,7 @@ document.querySelector("#presents").onchange = function () {
           obj.children += +arr[5];
         }
       });
+      // console.log(obj);
     });
   };
   reader.readAsText(file, "windows-1251");
@@ -469,7 +486,11 @@ const calcShipment = (obj) => {
     dataForCalc.gray = gray;
     dataForCalc.clamp = clamp;
     dataForCalc.stick = stick;
-    dataForCalc.presents = obj.male + obj.female;
+    dataForCalc.presents = 0;
+    if (checked !== undefined) {
+      checked.includes("male") ? (dataForCalc.presents += obj.male) : null;
+      checked.includes("female") ? (dataForCalc.presents += obj.female) : null;
+    }
     dataForCalc.children = obj.children;
     dataForCalc.newspapers = obj.newspapers;
     //
@@ -534,7 +555,11 @@ const calcShipment = (obj) => {
     dataForCalc.gray = gray;
     dataForCalc.clamp = clamp;
     dataForCalc.stick = stick;
-    dataForCalc.presents = obj.male + obj.female;
+    dataForCalc.presents = 0;
+    if (checked !== undefined) {
+      checked.includes("male") ? (dataForCalc.presents += obj.male) : null;
+      checked.includes("female") ? (dataForCalc.presents += obj.female) : null;
+    }
     dataForCalc.children = obj.children;
     dataForCalc.newspapers = obj.newspapers;
     obj.region === "Moscow"
