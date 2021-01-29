@@ -334,7 +334,7 @@ ol li span {
   place-items: center;
 }
 
-/* buttons ↓  */
+/* BUTTONS ↓  */
 
 .hbtn,
 .inputfile + label {
@@ -414,7 +414,7 @@ label {
   font-weight: normal;
 }
 
-/* buttons ↑ */
+/* BUTTONS ↑ */
 
 .inputfile {
   width: 0.1px;

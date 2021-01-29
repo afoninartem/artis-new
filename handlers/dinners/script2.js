@@ -97,7 +97,14 @@ const createObject = (arr) => {
       marksList: [],
     },
   };
-  const index = getIndexes(arr[1]);
+  let title;
+  arr.forEach(el => {
+    if (el[0] === 'Дата') {
+      title = el;
+    }
+  })
+  const index = getIndexes(title);
+ // console.log(arr[1]);
   arr.forEach((sub) => {
     sub[index.company] === `Арс Холдинг`
       ? company.artis.marksList.push([
@@ -132,6 +139,7 @@ const createObject = (arr) => {
     });
   }
   dinnersData = company;
+  // console.log(dinnersData);
   groupArtis(dinnersData.artis);
   getTotalMarks(dinnersData);
 };
@@ -145,6 +153,7 @@ document.querySelector(`#dinnersList`).onchange = function () {
     reader.onload = function (progressEvent) {
       let rawDinners = this.result.split(`\n`).map((el) => el.split(`;`));
       createObject(rawDinners);
+      // console.log(rawDinners);
     };
     fileIsLoaded = true;
     reader.readAsText(file, `windows-1251`);
@@ -174,7 +183,7 @@ document.getElementById("dataBase").onchange = function () {
     artisDBIsLoaded = true;
   };
   reader.readAsText(file, "windows-1251");
-  // console.log(artisDB)
+  // console.log(artisDB);
 };
 
 //Emulcom
@@ -241,6 +250,7 @@ const outputData = (obj) => {
         });
       });
     }
+
     //download artis
     document
       .querySelector(`.artis-dnld`)
@@ -248,7 +258,7 @@ const outputData = (obj) => {
         let csv = `Компания;${obj.name};${obj.total}`;
         csv += `\n`;
         const depts = obj.departments;
-        console.log(depts);
+        // console.log(depts);
         for (d in obj.departments) {
           const dept = obj.departments[d];
           csv += `Подразделение;${dept.name};${dept.total}`;
@@ -265,25 +275,28 @@ const outputData = (obj) => {
         hiddenElement.download = `${obj.name}.csv`;
         hiddenElement.click();
       });
-      //print artis
-      const addPageRow = (name, meals, title) => {
-        const pageRow = document.createElement(`div`);
-        pageRow.classList.add(`page__row`);
-        const rowName = document.createElement(`div`);
-        rowName.classList.add(`cell`);
-        rowName.textContent = name;
-        const rowMeals = document.createElement(`div`);
-        rowMeals.classList.add(`cell`);
-        rowMeals.textContent = meals;
-        if (title) {
-          rowName.classList.add(`title`);
-          rowMeals.classList.add(`title`);
-        }
-        pageRow.appendChild(rowName);
-        pageRow.appendChild(rowMeals);
-        return pageRow;
+
+    //print artis
+    const addPageRow = (name, meals, title) => {
+      const pageRow = document.createElement(`div`);
+      pageRow.classList.add(`page__row`);
+      const rowName = document.createElement(`div`);
+      rowName.classList.add(`cell`);
+      rowName.textContent = name;
+      const rowMeals = document.createElement(`div`);
+      rowMeals.classList.add(`cell`);
+      rowMeals.textContent = meals;
+      if (title) {
+        rowName.classList.add(`title`);
+        rowMeals.classList.add(`title`);
       }
-      document.querySelector(`.artis-print`).addEventListener(`click`, function () {
+      pageRow.appendChild(rowName);
+      pageRow.appendChild(rowMeals);
+      return pageRow;
+    };
+    document
+      .querySelector(`.artis-print`)
+      .addEventListener(`click`, function () {
         const printBlock = document.querySelector(`.print`);
         let page = document.createElement(`div`);
         page.classList.add(`page`);
@@ -301,8 +314,8 @@ const outputData = (obj) => {
             pageRows = 0;
             page = printBlock.lastChild;
           }
-          dept.imps.forEach(imp => {
-            const elem =  addPageRow(imp.name, imp.total, false);
+          dept.imps.forEach((imp) => {
+            const elem = addPageRow(imp.name, imp.total, false);
             page.appendChild(elem);
             pageRows += 1;
             if (pageRows === 45) {
@@ -312,7 +325,7 @@ const outputData = (obj) => {
               pageRows = 0;
               page = printBlock.lastChild;
             }
-          })
+          });
         }
         print();
       });
@@ -340,23 +353,21 @@ const outputData = (obj) => {
       });
       individualList.appendChild(markList);
     });
-        //download else
-        document
-        .querySelector(`.dnld`)
-        .addEventListener(`click`, function () {
-          let csv = `Компания;${obj.name};${obj.total}`;
-          csv += `\n`;
-          obj.imps.forEach((imp) => {
-            csv += `Сотрудник;${imp.name};${imp.total}`;
-            csv += `\n`;
-          });
-          var hiddenElement = document.createElement("a");
-          hiddenElement.href =
-            "data:text/csv;charset=utf-8," + encodeURI("\uFEFF" + csv);
-          hiddenElement.target = "_blank";
-          hiddenElement.download = `${obj.name}.csv`;
-          hiddenElement.click();
-        });
+    //download else
+    document.querySelector(`.dnld`).addEventListener(`click`, function () {
+      let csv = `Компания;${obj.name};${obj.total}`;
+      csv += `\n`;
+      obj.imps.forEach((imp) => {
+        csv += `Сотрудник;${imp.name};${imp.total}`;
+        csv += `\n`;
+      });
+      var hiddenElement = document.createElement("a");
+      hiddenElement.href =
+        "data:text/csv;charset=utf-8," + encodeURI("\uFEFF" + csv);
+      hiddenElement.target = "_blank";
+      hiddenElement.download = `${obj.name}.csv`;
+      hiddenElement.click();
+    });
   }
 };
 

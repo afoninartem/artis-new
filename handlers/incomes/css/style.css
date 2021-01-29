@@ -128,6 +128,8 @@ form {
   z-index: 0;
   width: 500px;
   background-color: white;
+  cursor: auto;
+  user-select: none;
 }
 
 .hbtn i,

@@ -196,6 +196,7 @@ details {
   z-index: 0;
   width: 120px;
   background-color: white;
+  cursor: auto;
 } 
 
 .hbtn i, .inputfile + label {
@@ -234,7 +235,6 @@ details {
   transition: border-top-width 0.1s ease 0s, height 0.2s ease 0.1s, width 0.2s ease 0.2s, margin 0.2s ease 0.2s;
 } 
 
-/* BUTTONS ↑ */
 
 .inputfile {
 	width: 0.1px;
@@ -248,7 +248,10 @@ details {
 #label1, #label2 {
   width: 300px;
   line-height: 1.2;
+  user-select: none;
 }
+
+/* BUTTONS ↑ */
 
 .print-btn {
   display: none;
