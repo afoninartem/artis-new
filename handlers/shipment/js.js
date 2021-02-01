@@ -702,7 +702,7 @@ document.getElementById("file").onchange = function () {
               : (shop.thinCatalog = `<p>${mat[1]}</p><p>РЕГ</p>`);
           } else if (mat[0].includes(`Блокнот`)) {
             shop.notebook = `<p>${mat[1]}</p>`;
-          } else if (mat[0].includes(`Кружка белая с логотипом`)) {
+          } else if (mat[0].includes(`Кружка с логотипом`)) {
             shop.cup = `<p>${mat[1]}</p>`;
           } else if (mat[0].includes(`Упаковка для кружки (мал.)`)) {
             shop.pack = `<p>${mat[1]}</p>`;

@@ -42,7 +42,8 @@ document.querySelector("#file2").onchange = function () {
             incSum: Number(row[4]),
             incShipper: row[5],
           });
-          material.totalSum += Number(row[4]);
+          material.totalSum +=
+            material.incomes[material.incomes.length - 1].incSum;
         }
       }
     });
@@ -60,7 +61,7 @@ document.querySelector("#file2").onchange = function () {
   reader.readAsText(file, `windows-1251`);
 };
 
-//Поступления и отгрузки рекламной продукции
+//Incomes and shipment
 document.querySelector("#file1").onchange = function () {
   let file = this.files[0];
   let reader = new FileReader();
@@ -82,6 +83,9 @@ document.querySelector("#file1").onchange = function () {
             total: Number(rawData[i][2].split(",").join(".")),
             incomes: [],
           });
+          // console.log(
+          //   `total: ${shipper.materials[shipper.materials.length - 1].total}`
+          // );
         }
         if (isDate(i, rawData)) {
           shipper.materials[shipper.materials.length - 1].incomes.push({
@@ -122,8 +126,8 @@ document.querySelector("#file3").onchange = function () {
         instruction = {};
       }
     });
-    console.log(instShipper);
-    console.log(shippers);
+    // console.log(instShipper);
+    // console.log(shippers);
     for (i in shippers) {
       if (shippers[i].name === instShipper.name) {
         shippers[i].materials.forEach((mat) => {
@@ -150,15 +154,15 @@ document.querySelector(".result").onclick = function () {
   const result = shippers
     .filter((el) => el.name)
     .filter((el) => !el.name.includes("ПРОЧИЕ"));
-  console.log(result);
+  // console.log(result);
   let totalSum = 0;
   result.forEach((res) => {
     csv += `Поставщик;${res.name};;;;`;
     csv += `\n`;
     res.materials.forEach((mat) => {
-      csv += `Материал;${mat.name};${mat.total};${(mat.totalSum / mat.total).toFixed(2)};${
-        mat.totalSum
-      }`;
+      csv += `Материал;${mat.name};${mat.total};${(
+        mat.totalSum / mat.total
+      ).toFixed(2)};${mat.totalSum}`;
       csv += `\n`;
       totalSum += mat.totalSum;
     });
