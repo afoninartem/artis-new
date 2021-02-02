@@ -4,13 +4,14 @@ const departments = [];
 const csvTitle = [
   `№`,
   `ФИО`,
+  `Отдел`,
   `Должность`,
   `Норма дней`,
   `Норма часов`,
   `всего отработано дней`,
   `всего отработано часов`,
   `из них удаленно в часах`,
-  `из них отпуск оплачиваемый/больничный`,
+  `из них отпуск оплачиваемый/ больничный`,
   `не рабочий`,
   `день	за свой счет`,
   `Командировка`,
@@ -21,17 +22,27 @@ const csvTitle = [
   `Примечание`,
 ];
 
-let numberOfTimesheets = 0;
-// let numberOfEmployees = 0;
+// states of uploads
+let timesheetsAreLoaded = false;
+let senesysIsLoaded = false;
 
+// counter for details
+let numberOfTimesheets = 0;
+
+//create details list
 const showDepartments = () => {
-  document.querySelector("ul").innerHTML = "";
+  document.querySelector(".timesheets-ul").innerHTML = "";
   const set = [...new Set(departments)];
   set.forEach((el) => {
     const li = document.createElement("li");
     li.textContent = el;
-    document.querySelector("ul").appendChild(li);
+    document.querySelector(".timesheets-ul").appendChild(li);
   });
+};
+
+//create errors list
+const showErrors = () => {
+  document.querySelector(".errors-ul").innerHTML = "";
 };
 
 const showDetails = () => {
@@ -59,7 +70,8 @@ const isName = (str) => {
   if (str.trim()) {
     const arr = str.split(" ");
     const re = /^[А-Я][а-я]+/;
-    if (arr.length === 2 || arr.length === 3 || arr.length === 4) {
+    // if (arr.length === 2 || arr.length === 3 || arr.length === 4) {
+    if (arr.length >= 2 && arr.length <= 4) {
       arr.forEach((el) => {
         if (!re.test(el)) result = false;
       });
@@ -79,14 +91,10 @@ const standartTime = (str) => {
 };
 
 const getOverJob = (normaTime, factTime) => {
-  console.log(normaTime, factTime);
   let norma = normaTime.split(":")[0] * 60;
   if (normaTime.split(":")[1]) norma += +normaTime.split(":")[1];
   let fact = factTime.split(":")[0] * 60;
   if (factTime.split(":")[1]) fact += +factTime.split(":")[1];
-  console.log(
-    `norma: ${norma} - ${typeof norma}; fact: ${fact} - ${typeof fact}`
-  );
   const diff = fact - norma;
   const d = diff < 0 ? diff * -1 : diff;
   const hour = Math.floor(d / 60);
@@ -94,43 +102,97 @@ const getOverJob = (normaTime, factTime) => {
   const h = hour > 9 ? hour : "0" + hour;
   const m = min > 9 ? min : "0" + min;
   const result = diff > 0 ? `${h}:${m}` : ` -${h}:${m}`;
-  console.log(result);
   return result;
 };
 
 document.querySelector(".result-btn").addEventListener("click", () => {
-  // console.log(timesheets)
-  let csv = "";
-  csvTitle.forEach((el, i) => {
-    csv += el;
-    if (i + 1 !== csvTitle.length) {
-      csv += ";";
+  if (senesysIsLoaded) {
+    document.querySelector(".prev-block").style.display = "flex";
+    const table = document.createElement("div");
+    table.classList.add("preview-table");
+    table.style.display = "grid";
+    table.style.gridTemplateColumns = `repeat(${csvTitle.length}, max-content)`;
+    csvTitle.forEach((elem) => {
+      const element = document.createElement("div");
+      element.classList.add("preview-table__title");
+      element.classList.add("preview-table__cell");
+      elem.split(" ").forEach((word) => {
+        element.innerHTML += `<p>${word}</p>`;
+        element.innerHTML += `\n`;
+      });
+      table.appendChild(element);
+    });
+    let num = 1;
+    let errors = 0;
+    for (emp in timesheets) {
+      if (senesys[emp]) {
+        timesheets[emp].time = senesys[emp].time;
+        let overjob = getOverJob(
+          timesheets[emp].normHours,
+          timesheets[emp].time
+        );
+        timesheets[emp].overjob = overjob;
+      } else {
+        alert(
+          `В Сенезисе нет такого сотрудника: ${emp}, ${timesheets[emp].department}`
+        );
+        errors += 1;
+        document.querySelector(".timesheets-errors").style.display = "block";
+        document.querySelector(
+          ".errors-ul"
+        ).innerHTML += `<li>${emp}, ${timesheets[emp].department} - нет в Senesys</li>`;
+      }
+      let str = `${num};${emp};${timesheets[emp].department};${timesheets[emp].position};${timesheets[emp].normDays};${timesheets[emp].normHours};;${timesheets[emp].time};;;;;;${timesheets[emp].overjob};;;;`;
+      str.split(";").forEach((data) => {
+        const cell = document.createElement("div");
+        cell.classList.add("preview-table__cell");
+        data === "undefined"
+          ? ((cell.textContent = "нет данных"), cell.classList.add("red-cell"))
+          : (cell.textContent = data);
+        table.appendChild(cell);
+      });
+      num += 1;
     }
-  });
-  csv += "\n";
-  let num = 1;
-  // console.log(csv)
-  for (emp in timesheets) {
-    if (senesys[emp]) {
-      timesheets[emp].time = senesys[emp].time;
-      let overjob = getOverJob(timesheets[emp].normHours, timesheets[emp].time);
-      timesheets[emp].overjob = overjob;
-    } else {
-      alert(
-        `В Сенезисе нет такого сотрудника: ${emp}, ${timesheets[emp].department}`
-      );
-    }
-    csv += `${num};${emp};${timesheets[emp].position};${timesheets[emp].normDays};${timesheets[emp].normHours};;${timesheets[emp].time};;;;;;${timesheets[emp].overjob};;;;;`;
-    csv += "\n";
-    num += 1;
+    document.querySelector(".err-quan").textContent = errors;
+    document.querySelector(".download__preview").appendChild(table);
   }
-  var hiddenElement = document.createElement("a");
-  hiddenElement.href =
-    "data:text/csv;charset=utf-8," + encodeURI("\uFEFF" + csv);
-  hiddenElement.target = "_blank";
-  hiddenElement.download = `Конец месяца.csv`;
-  hiddenElement.click();
-  // console.log(csv);
+});
+
+document.querySelector(".download-btn").addEventListener("click", () => {
+  if (senesysIsLoaded) {
+    let csv = "";
+    csvTitle.forEach((el, i) => {
+      csv += el;
+      if (i + 1 !== csvTitle.length) {
+        csv += ";";
+      }
+    });
+    csv += "\n";
+    let num = 1;
+    for (emp in timesheets) {
+      if (senesys[emp]) {
+        timesheets[emp].time = senesys[emp].time;
+        let overjob = getOverJob(
+          timesheets[emp].normHours,
+          timesheets[emp].time
+        );
+        timesheets[emp].overjob = overjob;
+      } else {
+        alert(
+          `В Сенезисе нет такого сотрудника: ${emp}, ${timesheets[emp].department}`
+        );
+      }
+      csv += `${num};${emp};${timesheets[emp].department};${timesheets[emp].position};${timesheets[emp].normDays};${timesheets[emp].normHours};;${timesheets[emp].time};;;;;;${timesheets[emp].overjob};;;;;`;
+      csv += "\n";
+      num += 1;
+    }
+    var hiddenElement = document.createElement("a");
+    hiddenElement.href =
+      "data:text/csv;charset=utf-8," + encodeURI("\uFEFF" + csv);
+    hiddenElement.target = "_blank";
+    hiddenElement.download = `Конец месяца.csv`;
+    hiddenElement.click();
+  }
 });
 
 const fileHandle = (file) => {
@@ -156,7 +218,7 @@ const fileHandle = (file) => {
   };
   reader.readAsText(file, `windows-1251`);
   document.querySelector(".ts-quan").textContent = numberOfTimesheets;
-  // document.querySelector('.emps-quan').textContent = numberOfEmployees;
+  timesheetsAreLoaded = true;
 };
 
 document.querySelector("#timesheet").onchange = function () {
@@ -165,6 +227,14 @@ document.querySelector("#timesheet").onchange = function () {
     fileHandle(this.files[file]);
   }
 };
+
+document.querySelector('.senesys-btn').addEventListener('click', () => {
+  if (timesheetsAreLoaded) {
+    document.querySelector('#senesysLabel').click();
+  } else {
+    alert('Сначала загрузите табели');
+  }
+})
 
 document.querySelector("#senesys").onchange = function () {
   let file = this.files[0];
@@ -185,4 +255,5 @@ document.querySelector("#senesys").onchange = function () {
     }
   };
   reader.readAsText(file, `windows-1251`);
+  senesysIsLoaded = true;
 };

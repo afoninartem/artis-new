@@ -1,27 +1,249 @@
 html {
   box-sizing: border-box;
 }
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .wrapper {
-  width: 80%;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 50px 10px;
+  display: grid;
+  place-items: center;
 }
 
-details {
+/* HEADER ↓ */
+
+.header {
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.header__nav {
+  display: flex;
+}
+
+.header__nav-item {
+  padding: 0 10px;
+  display: block;
+  transition-duration: 0.5s;
+  position: relative;
+  user-select: none;
+}
+
+.header__nav-btn,
+.drop__item-btn {
+  background: transparent;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.header__nav-btn:hover {
+  transform: scale(1.1);
+}
+
+.header__nav-btn:active {
+  transform: scale(1.2);
+}
+
+.drop {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  padding-top: 0.5rem;
+  left: 0;
+  display: none;
+  transform: translateX(10px);
+}
+
+.header__nav-item:hover > .drop,
+.drop:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+.drop__item-btn:hover {
+  transform: scale(1.1);
+}
+
+.drop__item-btn:active {
+  transform: scale(1.2);
+}
+
+.vue-logo:before {
+  content: url(../../../img/vue-logo.svg);
+  position: absolute;
+  left: -15%;
+}
+
+/* HEADER ↑ */
+
+.btn-container {
+  display: grid;
+  place-content: center;
+}
+
+/* DETAILS ↓ */
+
+.timesheets-details {
   display: none;
 }
 
-.info-emps {
+.timesheets-errors {
   display: none;
 }
+
+.timesheet-block__info {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+}
+
+.timesheets-details summary,
+.timesheets-errors summary {
+  margin-bottom: 10px;
+}
+
+.timesheets-ul li,
+.errors-ul li {
+  padding: 5px;
+}
+
+/* DETAILS ↑ */
+
+/* BUTTONS ↓ */
+
+.hbtn,
+.inputfile + label {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  padding: 8px 20px;
+  margin: 0px 3px 6px;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  white-space: nowrap;
+  z-index: 0;
+  width: 100%;
+  background-color: white;
+  cursor: auto;
+  user-select: none;
+}
+
+.hbtn i,
+.inputfile + label {
+  padding-right: 8px;
+}
+
+.hb-border-bottom-br3,
+.inputfile + label {
+  position: relative;
+  transition-duration: 0.3s;
+  overflow: visible;
+  box-sizing: border-box;
+  border: none;
+  padding: 10px 22px;
+}
+
+.hb-border-bottom-br3::after,
+.inputfile + label::after {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  border: 2px solid rgb(0, 0, 0);
+  z-index: 2;
+  margin: 0px;
+  left: 0px;
+  bottom: 0px;
+  border-top-width: 2px;
+  transition: border-top-width 0.1s ease 0.2s, height 0.2s ease 0.1s,
+    width 0.2s ease 0s, margin 0.2s ease 0s;
+}
+
+.hb-border-bottom-br3:hover::after,
+.inputfile + label:hover::after {
+  width: 60%;
+  height: 0px;
+  border-width: 0px 2px 2px;
+  margin: 0px 20%;
+  transition: border-top-width 0.1s ease 0s, height 0.2s ease 0.1s,
+    width 0.2s ease 0.2s, margin 0.2s ease 0.2s;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+/* #label1,
+#label2 {
+  line-height: 1.2;
+  user-select: none;
+} */
+
+/* BUTTONS ↑ */
+
+/* INPUT SENESYS ↓ */
+
+#senesysLabel {
+display: none;
+}
+
+/* INPUT SENESYS ↑ */
+
+/* PREVIEW ↓ */
 
 .prev-block {
   display: none;
+  flex-direction: column;
 }
+
+.preview-table__title {
+  font-size: 16px;
+  font-weight: bold;
+  display: grid;
+  place-items: center;
+  padding: 5px;
+}
+
+.preview-table__cell {
+  border: .1px solid black;
+  font-size: 14px;
+  padding: 3px;
+  text-align: center;
+}
+
+.red-cell {
+  color: red;
+  font-weight: bold;
+}
+
+/* PREVIEW ↑ */

@@ -56,7 +56,6 @@ document.querySelector("#file2").onchange = function () {
         });
       });
     });
-    // console.log(shippers);
   };
   reader.readAsText(file, `windows-1251`);
 };
@@ -83,9 +82,6 @@ document.querySelector("#file1").onchange = function () {
             total: Number(rawData[i][2].split(",").join(".")),
             incomes: [],
           });
-          // console.log(
-          //   `total: ${shipper.materials[shipper.materials.length - 1].total}`
-          // );
         }
         if (isDate(i, rawData)) {
           shipper.materials[shipper.materials.length - 1].incomes.push({
@@ -126,8 +122,6 @@ document.querySelector("#file3").onchange = function () {
         instruction = {};
       }
     });
-    // console.log(instShipper);
-    // console.log(shippers);
     for (i in shippers) {
       if (shippers[i].name === instShipper.name) {
         shippers[i].materials.forEach((mat) => {
@@ -139,8 +133,6 @@ document.querySelector("#file3").onchange = function () {
         });
       }
     }
-    // console.log(instShipper);
-    // console.log(shippers);
   };
   reader.readAsText(file, `windows-1251`);
 };
@@ -154,7 +146,6 @@ document.querySelector(".result").onclick = function () {
   const result = shippers
     .filter((el) => el.name)
     .filter((el) => !el.name.includes("ПРОЧИЕ"));
-  // console.log(result);
   let totalSum = 0;
   result.forEach((res) => {
     csv += `Поставщик;${res.name};;;;`;

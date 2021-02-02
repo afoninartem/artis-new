@@ -8,20 +8,16 @@ let stickerSum = 0;
 let nameIndex;
 let cardIndex;
 let stickIndex;
-const getIndexes = (str) => {
-
-}
+const getIndexes = (str) => {};
 
 //delete col time of work
-const deleteTime = (str) => {
-
-}
+const deleteTime = (str) => {};
 
 const createPreview = () => {
   const printBlock = document.querySelector(".print-block");
   printBlock.style.display = "grid";
   const hiddenButton = document.querySelector(".hidden__button");
-  hiddenButton.style.display = "flex";
+  hiddenButton.style.display = "block";
   actualOrdersOnly(listOfObj).forEach((elem) => {
     const shopName = document.createElement("div");
     shopName.classList.add("shop-name");
@@ -54,9 +50,6 @@ const createObj = (arr) => {
   if (arr[1] !== undefined && arr[1].length > 0) {
     const obj = {};
     obj.name = checkShopName(arr[1]);
-    if (arr[8] === undefined || arr[9] === undefined) {
-      console.log(obj.name, arr[8], arr[9]);
-    }
     obj.cards = +arr[8] > 0 ? +arr[8] : 0;
     obj.stickers = +arr[9] > 0 ? +arr[9] : 0;
     listOfObj.push(obj);
@@ -81,15 +74,19 @@ const actualOrdersOnly = (arr) => {
       }
     }
   });
-  // console.log(result);
   return result;
 };
 
 const checkShopName = (name) => {
-  name = name.split('"').join("").replace("  ", " ");
-  const namePart = name.match(/_.+/g);
+  name = name.split('"').join("").replace("  ", " ").trim();
+  let namePart = name.match(/_.+/g);
+  if (namePart !== null) {
+    namePart = namePart.toString().split('_').join('').trim();
+  }
   shops.forEach((elem, i) => {
-    if (elem.includes(namePart)) name = shops[i];
+    if (elem.includes(namePart)) {
+      name = shops[i];
+    }
   });
   return name;
 };
@@ -116,8 +113,8 @@ const getLastInfo = () => {
 
 const outputInfo = (correctDate) => {
   document.querySelector(
-    ".last-info"
-  ).textContent = `Последняя загрузка актуальных названий салонов производилась ${correctDate}.`;
+    "#lastInfo"
+  ).textContent = `Список салонов от ${correctDate}.`;
 };
 
 outputInfo(getLastInfo());
@@ -135,7 +132,7 @@ document.getElementById("shops").onchange = function () {
       if (shop.includes("_")) {
         const res = shop.split('"').join("");
         const final = res.replace("  ", " ");
-        shops.push(final);
+        shops.push(final.trim());
       }
     });
     localStorage.setItem(`lastShopsInfo`, JSON.stringify(shops));
@@ -150,7 +147,7 @@ document.getElementById("list").onchange = function () {
   let reader = new FileReader();
   reader.onload = function (progressEvent) {
     let rows = this.result.split("\r");
-    console.log(rows);
+    // console.log(rows);
     Array.from(rows).forEach((row) => {
       row = Array.from(row.split(";"));
       createObj(row);

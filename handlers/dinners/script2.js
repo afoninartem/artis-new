@@ -33,6 +33,8 @@ const structurateData = (obj) => {
 };
 
 const getDepts = (arr, obj) => {
+  console.log(arr)
+  console.log(obj)
   arr.forEach((el) => {
     if (obj.hasOwnProperty(el.name)) {
       el.dept = obj[el.name];
@@ -104,7 +106,6 @@ const createObject = (arr) => {
     }
   })
   const index = getIndexes(title);
- // console.log(arr[1]);
   arr.forEach((sub) => {
     sub[index.company] === `Арс Холдинг`
       ? company.artis.marksList.push([

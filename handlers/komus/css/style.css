@@ -39,6 +39,7 @@ body {
   display: block;
   transition-duration: 0.5s;
   position: relative;
+  user-select: none;
 }
 
 .header__nav-btn,
@@ -99,7 +100,6 @@ body {
 .btn-container {
   display: grid;
   place-content: center;
-  /* height: calc(100vh - 258px); */
 }
 
 /* MAIN ↑ */

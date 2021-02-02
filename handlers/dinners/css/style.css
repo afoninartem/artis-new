@@ -42,6 +42,7 @@ body {
   display: block;
   transition-duration: 0.5s;
   position: relative;
+  user-select: none;
 }
 
 .header__nav-btn,
@@ -110,6 +111,10 @@ body {
 .buttons-block {
   display: flex;
   justify-content: space-between;
+}
+
+.buttons-block button {
+  font-weight: bold;
 }
 
 .buttons-block, details, summary {
@@ -313,6 +318,12 @@ details {
 
 .manual__header {
   position: relative;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.manual ol li {
+  padding: 5px;
 }
 
 .tip span {

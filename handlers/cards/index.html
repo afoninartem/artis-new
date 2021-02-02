@@ -35,7 +35,7 @@
       </li>
       <li class="header__nav-item"><a class="header__nav-btn" value="personal">ПЕРСОНАЛ</a>
         <ul class="drop">
-          <li class="drop__item"><a class="drop__item-btn">УРВ</a></li>
+          <li class="drop__item"><a href="../time-tracking/index.html" class="drop__item-btn">УРВ</a></li>
         </ul>
       </li>
       <li class="header__nav-item"><a class="header__nav-btn" value="warehouse">СКЛАД</a>
@@ -56,23 +56,20 @@
       </li>
     </ul>
   </header>
-
   <div class="wrapper">
     <form action="" class="upload">
-      <p class="last-info"></p>
-      <label for="shops">Если прошло больше двух недель, рекомендуется загрузить актуальный список салонов в формате
-        CSV:</label>
-      <input type="file" name="full-list" id="shops">
-      <label for="list">Загрузить список заказов в формате CSV:</label>
-      <input type="file" name="full-list" id="list" required>
-      <button type="submit" class="button" id="download">Скачать CSV</button>
+      <input type="file" class="inputfile" name="shops" id="shops">
+      <label id="lastInfo" for="shops"></label>
+      <input type="file" class="inputfile" name="full-list" id="list" required>
+      <label for="list">Загрузить список заказов в формате CSV</label>
+      <button type="button" class="button hbtn hb-border-bottom-br3" id="download">Скачать CSV</button>
     </form>
     <div class="print-block">
       <div class="title">Салоны</div>
       <div class="title">Визитки</div>
       <div class="title">Наклейки</div>
     </div>
-    <button type="button" class="button hidden__button" onclick="window.print()">Печать</button>
+    <button type="button" class="button hidden__button hbtn hb-border-bottom-br3" onclick="window.print()">Печать</button>
 
     <script src="js.js"></script>
 </body>
