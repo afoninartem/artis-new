@@ -47,7 +47,7 @@
           <li class="drop__item"><a href="../cards/index.html" class="drop__item-btn">Визитки</a></li>
           <li class="drop__item"><a href="../incomes/index.html" class="drop__item-btn">Поступления</a></li>
           <li class="drop__item"><a href="../shipment/index.html" class="drop__item-btn">Отгрузки</a></li>
-          <li class="drop__item"><a href="../need/index.html" class="drop__item-btn vue-logo">Потребность</a></li>
+          <li class="drop__item"><a href="../warehouse-needs/index.html" class="drop__item-btn vue-logo">Потребность</a></li>
         </ul>
       </li>
     </ul>
@@ -94,11 +94,15 @@
           <li><span>3</span> Получившиеся файлы <a class="tip" href="">сохранить в формате CSV<span><img
                   src="./img/SaveCSV.PNG" alt=""></span></a></li>
           <li><span>4</span> Загрузить их через интерфейс программы</li>
+          <li>Файлы для демонстрации: <button onclick="download1C7Demo()" type="button">Данные из 1С7</button> <button onclick="downloadSenesysDemo()" type="button">Данные из Senesys</button></li>
         </ol>
       </div>
     </div>
   </div>
-  <script src="./script2.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-storage.js"></script> -->
+  <script src="./dinners-script.js"></script>
 </body>
-
 </html>
