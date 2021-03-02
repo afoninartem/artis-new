@@ -46,7 +46,8 @@
           <li class="drop__item"><a href="../cards/index.html" class="drop__item-btn">Визитки</a></li>
           <li class="drop__item"><a href="../incomes/index.html" class="drop__item-btn">Поступления</a></li>
           <li class="drop__item"><a href="../shipment/index.html" class="drop__item-btn">Отгрузки</a></li>
-          <li class="drop__item"><a href="../warehouse-needs/index.html" class="drop__item-btn vue-logo">Потребность</a></li>
+          <li class="drop__item"><a href="../warehouse-needs/index.html" class="drop__item-btn vue-logo">Потребность</a>
+          </li>
         </ul>
       </li>
     </ul>
@@ -62,14 +63,18 @@
             <summary>Загружено табелей: <span class="ts-quan"></span></summary>
             <ul class="timesheets-ul"></ul>
           </details>
+          <details class="senesys-is-loaded">
+            <summary>Загружено сотрудников: <span class="senesys-quan"></span></summary>
+            <ul class="senesys-ul"></ul>
+          </details>
           <details class="timesheets-errors">
             <summary>Ошибки: <span class="err-quan"></span></summary>
             <ul class="errors-ul"></ul>
           </details>
         </div>
         <form class="timesheet-block__input">
-          <input class="inputfile" type="file" name="timesheet" id="timesheet" multiple>
-          <label for="timesheet">Загрузить все табели</label>
+          <input class="inputfile" type="file" name="timesheet" id="timesheet" multiple accept=".csv">
+          <label id="tablesLabel" for="timesheet">Загрузить все табели</label>
         </form>
       </div>
 
@@ -79,7 +84,7 @@
             <p></p>
           </div>
           <form action="" class="senesys-block__input">
-            <input class="inputfile" type="file" name="senesys" id="senesys">
+            <input class="inputfile" type="file" name="senesys" id="senesys" accept=".csv">
             <label id="senesysLabel" for="senesys">Загрузить данные из Senesys</label>
             <button type="button" class="senesys-btn hbtn hb-border-bottom-br3">Загрузить данные из Senesys</button>
           </form>
@@ -89,11 +94,21 @@
       <div class="result-block">
         <button type="button" class="result-btn hbtn hb-border-bottom-br3">Показать результат</button>
         <button type="button" class="download-btn hbtn hb-border-bottom-br3">Скачать</button>
+        <button type="button" class="help-btn hbtn hb-border-bottom-br3" onclick="toggleManual()">Помощь</button>
       </div>
 
     </div>
 
-
+    <div class="popup">
+      <div class="manual">
+        <h1 class="manual__header">Инструкция по применению<span onclick="toggleManual()" class="close"></span></h1>
+        <ol>
+          <li><span>1</span> Выгрузку из Senesys и все табели <a class="tip" href="">сохранить в формате CSV<span><img
+                  src="./img/SaveCSV.PNG" alt=""></span></a></li>
+          <li><span>2</span> Загрузить их с помощью соответсвующих кнопок интерфейса программы</li>
+          <li>Файлы для демонстрации: <a href="./src/Senesys and timesheets.zip" download="Сенезис и табели.zip">Сенезис и табели.zip</a> </li>
+      </div>
+    </div>
 
   </div>
   <div class="prev-block">

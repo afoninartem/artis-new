@@ -1,3 +1,15 @@
+// firebase config
+firebase.initializeApp({
+  apiKey: "AIzaSyAEn0m8DZQHBSBMndRlxRtELv8K0vgpOGs",
+  authDomain: "artis-helper.firebaseapp.com",
+  projectId: "artis-helper",
+  storageBucket: "artis-helper.appspot.com",
+  messagingSenderId: "556205687381",
+  appId: "1:556205687381:web:37f7b7490b8064a266cadc",
+});
+
+const db = firebase.firestore();
+
 let primaryArray = [];
 let objectsArr = [];
 let fileWasUploaded = false;
@@ -87,7 +99,36 @@ const colorSPB = `rgba(245, 161, 15, 0.4)`;
 // });
 //end of test
 
+//download demo files
+const download1C7Demo = () => {
+  let result = "";
+  let res;
+  db.doc("shipment/1C7")
+    .get()
+    .then((doc) => {
+      res = doc.data().csv;
+      const res1 = res.split(`\n`).map((el) => el.split(`;`));
+      //  console.log(res1)
+      res1.forEach((arr) => {
+        result += arr.join(";");
+        result += "\n";
+      });
+      // console.log(result)
+      var hiddenElement = document.createElement("a");
+      hiddenElement.href =
+        "data:text/csv;charset=utf-8," + encodeURI("\uFEFF" + result);
+      hiddenElement.target = "_blank";
+      hiddenElement.download = `Пример данных из 1С.csv`;
+      hiddenElement.click();
+    });
+};
+
 //popup help
+const popup = document.querySelector(`.popup`);
+popup.addEventListener('click', (event) => {
+  if (event.target.classList.value === 'popup') toggleManual();
+})
+
 const toggleManual = () => {
   const popup = document.querySelector(`.popup`);
   let visibility = window.getComputedStyle(popup);
@@ -104,7 +145,7 @@ const getWarningText = (mat, shop) => {
   const warn = document.querySelector(`.warn-text`);
   const warnRow = document.createElement(`div`);
   warnRow.classList.add(`warn-row`);
-  warnRow.innerHTML = `<div><span class="warn-mat">${mat[0]} - ${mat[1]}:</span> ${warnOrders}</div>`;
+  warnRow.innerHTML = `<div><span class="warn-mat">${mat[0]} - ${mat[1]} - некорректное количество:</span> ${warnOrders}</div>`;
   warn.appendChild(warnRow);
   showWarning();
 };
@@ -522,9 +563,15 @@ const cutName = (mat) => {
   let matName = mat[0];
   let result;
   if (matName.includes(`с логотипом`))
-    matName = matName.split(`с логотипом`).join("").split("  ").join(" ");
-  if (matName.includes(`Календарь`))
-    matName = matName.split(`Календарь`).join("").split("  ").join(" ");
+    matName = matName.split(`с логотипом`).join("").split("  ").join(" ").trim();
+  if (matName.includes(`Календарь`)) {
+    matName = matName.split(`Календарь`).join("").split("  ").join(" ").trim();
+    const first = matName[0]
+    let other = matName.split("");
+    other.shift();
+    other = other.join("");
+    matName = `${first.toUpperCase()}${other.toLowerCase()}`;
+  }
   switch (matName) {
     case `%Укомплектованный заказ Комус для ФС`:
       result = `Комус`;
@@ -582,7 +629,7 @@ const forTheGlory = () => {
     element.style.display = "none";
   };
   setTimeout(() => {
-    hideKumamon(img), 10;
+    hideKumamon(img), 300;
   });
 };
 
@@ -595,6 +642,11 @@ document.getElementById("file").onchange = function () {
   let file = this.files[0];
   let reader = new FileReader();
   reader.onload = function (progressEvent) {
+    // write document to firestore
+    // db.doc("shipment/1C7").set({
+    //   name: "1C7",
+    //   csv: this.result,
+    // });
     let primary = this.result.split("\n");
     primaryArray = Array.from(primary);
     primary.forEach((el, i) => {

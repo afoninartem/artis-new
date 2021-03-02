@@ -1,7 +1,7 @@
 let fileName;
 const komus = [];
 
-document.querySelector(".download-1").addEventListener("click", () => {
+document.querySelector(".download-directory").addEventListener("click", () => {
   let csv = `Артикул;Наименование;Единица измерения;Цена`;
   csv += `\n`;
   komus.forEach((obj) => {
@@ -16,7 +16,7 @@ document.querySelector(".download-1").addEventListener("click", () => {
   hiddenElement.click();
 });
 
-document.querySelector(".download-2").addEventListener("click", () => {
+document.querySelector(".download-income").addEventListener("click", () => {
   let csv = `НДС;КОД ВЫГРУЗКИ;КОЛИЧЕСТВО;ЦЕНА С НДС;СУММА С НДС`;
   csv += `\n`;
   komus.forEach((obj) => {
@@ -45,18 +45,16 @@ const getFileName = (arr) => {
 const getIndexes = (arr) => {
   const ind = {};
   const title = arr.filter((el) => el[0].includes("Артикул"));
-  console.log(title)
-  title.flat().forEach((el, i) => {
-    console.log(el)
+  console.log(title);
+  title[0].flat().forEach((el, i) => {
     if (el.includes("Артикул")) ind.articul = i;
-    if (el.includes("Наименование товара")) ind.name = i;
+    if (el.includes("Наименование")) ind.name = i;
     if (el.includes("Ед. изм.")) ind.unit = i;
-    if (el.includes("Количество")) ind.quantity = i;
-    if (el.includes("Цена с НДС РУБ")) ind.price = i;
+    if (el.includes("Количество") || el.includes("Кол-во")) ind.quantity = i;
+    if (el.includes("Цена с НДС") || el.includes("Цена c НДС")) ind.price = i;
     if (el.includes("% НДС")) ind.nds = i;
-    if (el.includes("Сумма с НДС РУБ")) ind.sum = i;
+    if (el.includes("Сумма с НДС")) ind.sum = i;
   });
-  console.log(ind)
   return ind;
 };
 
@@ -65,7 +63,6 @@ document.querySelector(`#file`).onchange = function () {
   let reader = new FileReader();
   reader.onload = function (progressEvent) {
     let rawKomus = this.result.split(`\n`).map((el) => el.split(`;`));
-    // console.log(rawKomus)
     const index = getIndexes(rawKomus);
     rawKomus.forEach((el) => {
       if (el[0].includes("Грузополучатель")) {
