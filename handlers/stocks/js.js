@@ -445,8 +445,8 @@ const getLeaflets = (leaflet) => {
 const calcShipment = (obj) => {
   if (obj.status === "top") {
     const poster = obj.forecast.poster;
-    const vip = obj.leftover.vip < 20 ? 20 - obj.leftover.vip : 0;
-    const vipPack = obj.leftover.vipPack < 20 ? 20 - obj.leftover.vipPack : 0;
+    const vip = obj.leftover.vip < 30 ? 30 - obj.leftover.vip : 0;
+    const vipPack = obj.leftover.vipPack < 30 ? 30 - obj.leftover.vipPack : 0;
     const cup = obj.forecast.cup;
     const cupPack = obj.forecast.cupPack;
     const vine =

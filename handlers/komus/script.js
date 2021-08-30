@@ -45,7 +45,6 @@ const getFileName = (arr) => {
 const getIndexes = (arr) => {
   const ind = {};
   const title = arr.filter((el) => el[0].includes("Артикул"));
-  console.log(title);
   title[0].flat().forEach((el, i) => {
     if (el.includes("Артикул")) ind.articul = i;
     if (el.includes("Наименование")) ind.name = i;
@@ -63,14 +62,17 @@ document.querySelector(`#file`).onchange = function () {
   let reader = new FileReader();
   reader.onload = function (progressEvent) {
     let rawKomus = this.result.split(`\n`).map((el) => el.split(`;`));
+    console.log(rawKomus)
     const index = getIndexes(rawKomus);
+    console.log(index)
     rawKomus.forEach((el) => {
       if (el[0].includes("Грузополучатель")) {
         fileName = getFileName(el);
       }
       if (!el[0].includes("Артикул")) {
         if (el[0].length >= 3 && el[0].length <= 8) {
-          let sum = el[index.sum].split(",").join(".");
+          if (!el[index.sum]) console.log(el)
+          let sum = el[index.sum].split(' ').join('').split(",").join(".");
           let arr = sum.split("");
           let realSum = "";
           arr.forEach((s) => {

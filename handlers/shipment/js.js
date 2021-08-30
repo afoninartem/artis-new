@@ -169,7 +169,7 @@ const isWarningMaterial = (mat, shop) => {
   if (mat[0] === `Шампанское`) {
     if (mat[1] % 6) getWarningText(mat, shop);
   }
-  if (mat[0] === `Леденец`) {
+  if (mat[0] === `Карамель`) {
     if (mat[1] > 5) getWarningText(mat, shop);
   }
   if (mat[0] === `Шоколадный набор`) {
@@ -460,12 +460,14 @@ const mainTable = (currentArr) => {
         other.classList.add(`other`);
         shop.otherMats.forEach((mat) => {
           if (
-            mat[0].includes(`обои`) ||
+            mat[0].includes(`бои`) || //Обои и Фотообои
             mat[0].includes(`Комус`) ||
             mat[0].includes(`сетка`) ||
             mat[0].includes(`Бумага`) ||
             mat[0].includes(`Декор`) ||
-            mat[0].includes(`браз`)
+            mat[0].includes(`браз`) ||
+            mat[0].includes(`доска`) ||
+            mat[0].includes(`Коврик`)
           ) {
             other.innerHTML += `<div class="underline"><span>${mat[0]} - ${mat[1]}</span></div`;
           } else {
@@ -742,7 +744,7 @@ document.getElementById("file").onchange = function () {
         shop.samples = [];
         shop.materials.forEach((mat) => {
           isWarningMaterial(mat, shop);
-          if (mat[0].includes(`Образец фас`) || mat[0].includes(`50х50`)) {
+          if (mat[0].includes(`Образец фас`) || mat[0].includes(`50х50`) || mat[0].includes(`бортик`)) {
             shop.samples.push(mat);
           } else if (mat[0].includes(`80 полос`)) {
             mat[0].includes(`(48 часов)`)

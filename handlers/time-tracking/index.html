@@ -68,13 +68,13 @@
             <ul class="senesys-ul"></ul>
           </details>
           <details class="timesheets-errors">
-            <summary>Ошибки: <span class="err-quan"></span></summary>
+            <summary>Нет отметок в Senesys: <span class="err-quan"></span></summary>
             <ul class="errors-ul"></ul>
           </details>
         </div>
         <form class="timesheet-block__input">
           <input class="inputfile" type="file" name="timesheet" id="timesheet" multiple accept=".csv">
-          <label id="tablesLabel" for="timesheet">Загрузить все табели</label>
+          <label id="tablesLabel" for="timesheet">Загрузить табели</label>
         </form>
       </div>
 
@@ -105,8 +105,9 @@
         <ol>
           <li><span>1</span> Выгрузку из Senesys и все табели <a class="tip" href="">сохранить в формате CSV<span><img
                   src="./img/SaveCSV.PNG" alt=""></span></a></li>
-          <li><span>2</span> Загрузить их с помощью соответсвующих кнопок интерфейса программы</li>
-          <li>Файлы для демонстрации: <a href="./src/Senesys and timesheets.zip" download="Сенезис и табели.zip">Сенезис и табели.zip</a> </li>
+          <li><span>2</span> Загрузить их с помощью соответствующих кнопок интерфейса программы</li>
+          <li>Файлы для демонстрации: <a href="./src/Senesys and timesheets.zip" download="Сенезис и табели.zip">Сенезис
+              и табели.zip</a> </li>
       </div>
     </div>
 
@@ -114,6 +115,8 @@
   <div class="prev-block">
     <div class="download__preview"></div>
   </div>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-firestore.js"></script>
   <script src="script.js"></script>
 </body>
 

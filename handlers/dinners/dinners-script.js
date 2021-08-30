@@ -444,4 +444,4 @@ const toggleManual = () => {
     : (popup.style.display = `none`);
 };
 
-document.querySelector('popup').addEventListener('click', toggleManual())
+// document.querySelector('popup').addEventListener('click', toggleManual())
